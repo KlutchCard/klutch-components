@@ -1,7 +1,7 @@
 import * as React from "react"
 import Svg, { SvgProps, G, Path, Defs, ClipPath } from "react-native-svg"
 
-const Logo = function ({color, ...props}: SvgProps) {
+export const Logo = function ({color, ...props}: SvgProps) {
   return (
     <Svg
       width={78}

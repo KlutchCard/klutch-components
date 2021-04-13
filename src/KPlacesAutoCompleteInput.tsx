@@ -105,7 +105,7 @@ const style = StyleSheet.create({
     }
 })
 
-const googleKey = Constants.manifest.extra.googleApiKey
+const googleKey = Constants?.manifest?.extra?.googleApiKey
 
 
 
