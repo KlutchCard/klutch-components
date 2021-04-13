@@ -1,18 +1,15 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import KlutchComponents from 'klutch-components';
+import * as Klutch from 'klutch-components';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
 
-  React.useEffect(() => {
-    KlutchComponents.multiply(3, 7).then(setResult);
-  }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Klutch.KText>Result: {result}</Klutch.KText>
     </View>
   );
 }
