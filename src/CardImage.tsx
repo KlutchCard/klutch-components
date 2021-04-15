@@ -8,7 +8,7 @@ import Logo from "./Logo"
 
 export interface CardImageProps extends ViewProps {
   card: Card
-  isLocked: Boolean
+  isLocked?: Boolean
 }
 
 export const CardImage: React.FC<CardImageProps> = ({card, isLocked, ...props}: CardImageProps) => {
@@ -27,7 +27,7 @@ export const CardImage: React.FC<CardImageProps> = ({card, isLocked, ...props}: 
   )
 }
 
-export const GetCardImageSource = ({color, media}: Card, isLocked: Boolean) => {
+export const GetCardImageSource = ({color, media}: Card, isLocked?: Boolean) => {
   if (isLocked) return require(`../assets/card/BCBCBC.png`)
 
   switch(color.valueOf()){
