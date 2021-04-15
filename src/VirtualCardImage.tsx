@@ -14,16 +14,17 @@ export const VirtualCardImage: React.FC<VirtualCardImageProps> = ({card, ...prop
 
   return (
     <View style={style.cardView} {...props}>
-      <Image style={style.cardImage} source={GetCardImageSource(card.color.valueOf())} />
-      <Logo style={style.logo} color={"black"} />  
-      <KText style={style.cardName}>{card?.name}</KText>        
+      <Image style={style.cardImage} source={GetCardImageSource(card)} />
+      <Logo style={style.logo} color={"black"} />
+      <KText style={style.cardName}>{card?.name}</KText>
     </View>
   )
 }
 
-const GetCardImageSource = (color: string) => {
-  switch(color){
-    case "#44FF4E": return require(`../assets/card/virtual/44FF4E.png`)
+const GetCardImageSource = ({isLocked, color}: Card) => {
+  if (isLocked) return require(`../assets/card/virtual/BCBCBC.png`)
+
+  switch(color.valueOf()){
     case "#FFB131": return require(`../assets/card/virtual/FFB131.png`)
     case "#5ED4DC": return require(`../assets/card/virtual/5ED4DC.png`)
     case "#EA3DEE": return require(`../assets/card/virtual/EA3DEE.png`)
@@ -34,7 +35,7 @@ const GetCardImageSource = (color: string) => {
     case "#BA93EC": return require(`../assets/card/virtual/BA93EC.png`)
     case "#03C09A": return require(`../assets/card/virtual/03C09A.png`)
     case "#FBEAC6": return require(`../assets/card/virtual/FBEAC6.png`)
-    default: return require(`../assets/card/virtual/BCBCBC.png`)
+    default: return require(`../assets/card/virtual/44FF4E.png`)
   }
 }
 
