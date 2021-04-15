@@ -12,9 +12,7 @@ export interface CardImageProps extends ViewProps {
 }
 
 export const CardImage: React.FC<CardImageProps> = ({card, isLocked, ...props}: CardImageProps) => {
-  if (card.media === CardMedia.VIRTUAL &&
-      card.color === CardColor.BLACK) card.color = CardColor.GRAY
-  const style = buildStyles(card?.color)
+  const style = buildStyles(card.color)
 
   return (
     <View style={{alignItems: 'center'}}>
@@ -55,7 +53,7 @@ export const GetCardImageSource = (card: Card, isLocked?: Boolean) => {
 
 export default CardImage
 
-const buildStyles = (color: string = CardColor.BLACK) => StyleSheet.create({
+const buildStyles = (color: CardColor) => StyleSheet.create({
   cardView: {
   },
   cardImage: {
@@ -64,7 +62,7 @@ const buildStyles = (color: string = CardColor.BLACK) => StyleSheet.create({
     position: "absolute",
     bottom: 60,
     right: 20,
-    color: "white",
+    color: (color === CardColor.BLACK ? "white" : "black"),
     textTransform: "uppercase"
   },
   logo: {
