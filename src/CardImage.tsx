@@ -7,10 +7,11 @@ import Logo from "./Logo"
 
 
 export interface CardImageProps extends ViewProps {
-  card: Card    
+  card: Card
+  isLocked?: Boolean
 }
 
-export const CardImage: React.FC<CardImageProps> = ({card, ...props}: CardImageProps) => {
+export const CardImage: React.FC<CardImageProps> = ({card, isLocked, ...props}: CardImageProps) => {
   if (card.media === CardMedia.VIRTUAL &&
       card.color === CardColor.BLACK) card.color = CardColor.GRAY
   const style = buildStyles(card?.color)
@@ -18,16 +19,20 @@ export const CardImage: React.FC<CardImageProps> = ({card, ...props}: CardImageP
   return (
     <View style={{alignItems: 'center'}}>
       <View style={style.cardView} {...props}>
-        <Image style={style.cardImage} source={GetCardImageSource(card.color)} />
-        <Logo style={style.logo} color={(card.color === CardColor.BLACK) ? "white" : "black"} />  
-        <KText style={style.cardName}>{card?.name}</KText>        
+        <Image style={style.cardImage} source={GetCardImageSource(card, isLocked)} />
+        <Logo style={style.logo} color={(card.color === CardColor.BLACK) ? "white" : "black"} />
+        <KText style={style.cardName}>{card?.name}</KText>
       </View>
     </View>
   )
 }
 
-export const GetCardImageSource = (color: string) => {
-  switch(color){
+export const GetCardImageSource = (card: Card, isLocked?: Boolean) => {
+  if ((isLocked === undefined && card.isLocked === true) || isLocked === true) {
+    return require(`../assets/card/BCBCBC.png`)
+  }
+
+  switch(card.color.valueOf()){
     case "#44FF4E": return require(`../assets/card/44FF4E.png`)
     case "#FFB131": return require(`../assets/card/FFB131.png`)
     case "#5ED4DC": return require(`../assets/card/5ED4DC.png`)
@@ -39,8 +44,12 @@ export const GetCardImageSource = (color: string) => {
     case "#BA93EC": return require(`../assets/card/BA93EC.png`)
     case "#03C09A": return require(`../assets/card/03C09A.png`)
     case "#FBEAC6": return require(`../assets/card/FBEAC6.png`)
-    case "#BCBCBC": return require(`../assets/card/BCBCBC.png`)
-    default: return require(`../assets/card/2B2B2B.png`)
+    default: {
+      if (card.media === CardMedia.VIRTUAL) {
+        return require(`../assets/card/44FF4E.png`)
+      }
+      return require(`../assets/card/2B2B2B.png`)
+    }
   }
 }
 
