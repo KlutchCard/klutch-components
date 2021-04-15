@@ -8,9 +8,10 @@ import Logo from "./Logo"
 
 export interface CardImageProps extends ViewProps {
   card: Card
+  isLocked: Boolean
 }
 
-export const CardImage: React.FC<CardImageProps> = ({card, ...props}: CardImageProps) => {
+export const CardImage: React.FC<CardImageProps> = ({card, isLocked, ...props}: CardImageProps) => {
   if (card.media === CardMedia.VIRTUAL &&
       card.color === CardColor.BLACK) card.color = CardColor.GRAY
   const style = buildStyles(card?.color)
@@ -18,7 +19,7 @@ export const CardImage: React.FC<CardImageProps> = ({card, ...props}: CardImageP
   return (
     <View style={{alignItems: 'center'}}>
       <View style={style.cardView} {...props}>
-        <Image style={style.cardImage} source={GetCardImageSource(card)} />
+        <Image style={style.cardImage} source={GetCardImageSource(card, isLocked)} />
         <Logo style={style.logo} color={(card.color === CardColor.BLACK) ? "white" : "black"} />
         <KText style={style.cardName}>{card?.name}</KText>
       </View>
@@ -26,7 +27,7 @@ export const CardImage: React.FC<CardImageProps> = ({card, ...props}: CardImageP
   )
 }
 
-export const GetCardImageSource = ({color, media, isLocked}: Card) => {
+export const GetCardImageSource = ({color, media}: Card, isLocked: Boolean) => {
   if (isLocked) return require(`../assets/card/BCBCBC.png`)
 
   switch(color.valueOf()){
@@ -41,7 +42,6 @@ export const GetCardImageSource = ({color, media, isLocked}: Card) => {
     case "#BA93EC": return require(`../assets/card/BA93EC.png`)
     case "#03C09A": return require(`../assets/card/03C09A.png`)
     case "#FBEAC6": return require(`../assets/card/FBEAC6.png`)
-    case "#BCBCBC": return require(`../assets/card/BCBCBC.png`)
     default: {
       if (media === CardMedia.VIRTUAL) {
         return require(`../assets/card/44FF4E.png`)
