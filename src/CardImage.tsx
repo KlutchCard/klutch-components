@@ -27,7 +27,7 @@ export const CardImage: React.FC<CardImageProps> = ({card, ...props}: CardImageP
 }
 
 export const GetCardImageSource = ({color, media, isLocked}: Card) => {
-  if (isLocked) return require(`../assets/card/virtual/BCBCBC.png`)
+  if (isLocked) return require(`../assets/card/BCBCBC.png`)
 
   switch(color.valueOf()){
     case "#44FF4E": return require(`../assets/card/44FF4E.png`)
@@ -43,8 +43,8 @@ export const GetCardImageSource = ({color, media, isLocked}: Card) => {
     case "#FBEAC6": return require(`../assets/card/FBEAC6.png`)
     case "#BCBCBC": return require(`../assets/card/BCBCBC.png`)
     default: {
-      if (media == CardMedia.VIRTUAL) {
-        return require(`../assets/card/virtual/44FF4E.png`)
+      if (media === CardMedia.VIRTUAL) {
+        return require(`../assets/card/44FF4E.png`)
       }
       return require(`../assets/card/2B2B2B.png`)
     }
