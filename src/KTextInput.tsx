@@ -104,13 +104,18 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
     }
 
 
-    private componentBlurred = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+    validateComponent() {        
         const {value, onValidationChanged, onBlur} = this.props
 
-        const valid = validate(value, this.props.validations)
+        const valid = validate(value, this.props.validations)        
         this.setState(valid, () => {
             onValidationChanged && onValidationChanged(valid.valid)
         })
+    }
+
+    private componentBlurred = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+        const {onBlur} = this.props
+        this.validateComponent()
         onBlur && onBlur(e)
     }
 
@@ -195,6 +200,8 @@ const styles = StyleSheet.create({
     },
     textInput: {
        fontSize: KlutchTheme.form.input.fontSize,  
+       borderBottomColor: KlutchTheme.form.input.borderBottomColor,
+       borderBottomWidth: KlutchTheme.form.input.borderBottomWidth, 
        textAlignVertical: "top",     
        flex: 1,
        height: "100%"
