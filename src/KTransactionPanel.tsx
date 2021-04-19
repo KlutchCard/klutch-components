@@ -14,7 +14,7 @@ export const KTransactionPanel: React.FC<KTransactionPanelProps> = ({recipeName,
     return (
         <View style={style.kTransactionPanel}>
             <KText style={style.recipeName} fontWeight="semibold">{recipeName}</KText>
-            <View>                
+            <View style={{flex: 1}}>                
                 {children}
             </View>
         </View>
