@@ -26,4 +26,5 @@ export * from './KToggle'
 export * from './Logo'
 export * from './PlusSign'
 export * from './VirtualCardImage'
+export * from './KTransactionPanel'
 
