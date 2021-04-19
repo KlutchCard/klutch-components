@@ -2,9 +2,9 @@
 import React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
 
-export const PlusSign =  ({color, ...props}: SvgProps) =>     <Svg
-width={16}
-height={16}
+export const PlusSign =  ({color, width, height, ...props}: SvgProps) =>     <Svg
+width={width ||16}
+height={height || 16}
 viewBox="0 0 16 16"
 fill="none"
 {...props}
