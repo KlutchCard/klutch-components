@@ -115,7 +115,9 @@ const styles = StyleSheet.create({
         color: KlutchTheme.form.button.foreGroundColor
     },
     valueStyle: {
-        flex: 1
+        flex: 1,
+        borderBottomColor: KlutchTheme.form.input.borderBottomColor,
+        borderBottomWidth: KlutchTheme.form.input.borderBottomWidth
     },
     errorMessage: {
         color: "red"
