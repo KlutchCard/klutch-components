@@ -55,10 +55,7 @@ const buildStyles = (color: string = CardColor.BLACK) => StyleSheet.create({
   },
   logo: {
     position: "absolute",
-    top: 50,
-    left: -10,
-    transform: [
-      { rotateZ: "270deg" }
-    ]
+    top: 20,
+    left: 45,
   }
 })
