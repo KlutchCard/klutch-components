@@ -3,13 +3,13 @@ import { Pressable, StyleProp, ViewStyle, StyleSheet, ActivityIndicator, TextSty
 import { useHistory } from "react-router-native"
 import KlutchTheme from "./KlutchTheme"
 import KText from "./KText"
-import * as Haptics from 'expo-haptics'; 
+import * as Haptics from 'expo-haptics';
 
 export interface KButtonProps  {
-    style?: StyleProp<ViewStyle>    
+    style?: StyleProp<ViewStyle>
     label: string
     disabled?: boolean
-    type?: "primary" | "cancel"  | "outline"
+    type?: "primary" | "cancel"  | "outline" | "delete"
     onPress?: () => void
     loading?: boolean
     link?: string
@@ -21,7 +21,7 @@ export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, o
     const [pressed, setPressed] = useState(false)
 
     const history = useHistory();
-    
+
     var onButtonPress = onPress || (() => {
         if (link) {
             history.push(link)
@@ -29,7 +29,7 @@ export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, o
     })
 
     let extraStyle = null
-    let extraLabelStyle = null    
+    let extraLabelStyle = null
 
     let bg = KlutchTheme.form.button.backgroundColor
     let fg = KlutchTheme.form.button.foreGroundColor
@@ -37,11 +37,11 @@ export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, o
     if (pressed) {
         bg = KlutchTheme.form.button.pressedBackground
     }
-    
+
     if (disabled && !loading) {
-        fg =  KlutchTheme.form.button.disabledForeGroundColor  
-        bg =  KlutchTheme.form.button.disabledBackGroundColor      
-    }    
+        fg =  KlutchTheme.form.button.disabledForeGroundColor
+        bg =  KlutchTheme.form.button.disabledBackGroundColor
+    }
 
     switch (type) {
         case "primary" : {
@@ -59,6 +59,11 @@ export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, o
             extraLabelStyle = {color: bg}
             break
         }
+        case "delete": {
+          extraStyle = StyleSheet.flatten([styles.primary, {backgroundColor: "transparent", borderWidth: 1, borderColor: "red"}])
+          extraLabelStyle = {color: "red"}
+          break;
+        }
     }
 
     const onPressIn = () => {
@@ -67,14 +72,14 @@ export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, o
     }
 
     return (
-        <Pressable 
-            disabled={disabled || loading} 
-            style={[styles.kbutton,  extraStyle, style]} 
-            onPressOut={() => setPressed(false)} 
-            onPressIn={() => onPressIn()} 
-            onPress={onButtonPress} 
+        <Pressable
+            disabled={disabled || loading}
+            style={[styles.kbutton,  extraStyle, style]}
+            onPressOut={() => setPressed(false)}
+            onPressIn={() => onPressIn()}
+            onPress={onButtonPress}
         >
-            {loading ? 
+            {loading ?
                 (<ActivityIndicator size="small" color={extraLabelStyle?.color} />) :
                 (<KText style={[styles.label, extraLabelStyle, textStyle]}>{label}</KText>)}
         </Pressable>
@@ -87,14 +92,14 @@ const styles = StyleSheet.create({
     kbutton: {
         flex: 1,
         alignContent: "center",
-        justifyContent: "center",        
-        height: 50,        
+        justifyContent: "center",
+        height: 50,
     },
-    primary: {        
+    primary: {
         flex: 3
     },
     label: {
         textTransform: "uppercase",
         textAlign: "center"
     }
-}) 
+})
