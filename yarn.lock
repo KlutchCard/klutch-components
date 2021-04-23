@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@alloycard/alloy-js@^1.1.18":
-  version "1.1.18"
-  resolved "https://npm.pkg.github.com/download/@alloycard/alloy-js/1.1.18/3a74b044feb0fe088b8f2ece0a3161dcc9cd181cad6c614442347ffc15294c39#6ccd30801259168cc3b9ca7b3df4ac366c78e96e"
-  integrity sha512-/iFhCGqCrw3wvsyzHzmA0r/Fm0U8h2QtGfamC5FXvPRSBCmi3p0Q4SigwaNHHEafuOSPCcYe6tWVP9xXN85fKg==
+"@alloycard/alloy-js@^1.1.23":
+  version "1.1.23"
+  resolved "https://npm.pkg.github.com/download/@alloycard/alloy-js/1.1.23/795a6866184a1289d5fd8f0721b665725d5d6fc2b3d8bae3efef4447728d953a#6010750508dbed1926fa7ac27c61834281373fa9"
+  integrity sha512-t8/uwn1v39bh0vE62Sic4rhE/h84Pql9WdFGHkbJ0jAdByIsuBMcS3Hg0r+hZ0yzdvEzPwkLJIPIrebwwhOWBA==
   dependencies:
     apollo-cache-inmemory "^1.6.6"
     apollo-client "^2.6.10"
