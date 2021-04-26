@@ -16,7 +16,7 @@ export const KToggle: React.FC<KToggleProps> = ({value, onValueChanged, ...props
 
     return (
         <Pressable style={[style.pressable, value && style.pressableEnabled]} hitSlop={20} onPress={togglePressed} {...props}>
-            <View style={style.switch}></View>
+            <View style={style.switch} />
         </Pressable>
     )
 }

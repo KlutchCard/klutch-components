@@ -40,7 +40,7 @@ export const KCardColorPickerInput: React.FC<KCardColorPickerInputProps> = (
         <View style={[styles.textInputRow, squareStyle]}>
             <View style={[styles.colorSquare,{backgroundColor: squareColor}]}/>
         </View> 
-        <KText style={styles.errorMessage}></KText>             
+        <KText style={styles.errorMessage} />             
     </Pressable>
 
     const validColors = Object.keys(CardColor).filter(c => (![CardColor.GRAY, CardColor.BLACK].includes(CardColor[c as keyof typeof CardColor])))

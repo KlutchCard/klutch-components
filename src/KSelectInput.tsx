@@ -37,7 +37,7 @@ export const KSelectInput: React.FC<KSelectInputProps> = (
         <View style={[styles.textInputRow, selectStyle]}>
             <KText style={[styles.valueStyle, valueStyle]}>{displayValue ?? value }</KText>
         </View> 
-        <KText style={styles.errorMessage}></KText>             
+        <KText style={styles.errorMessage} />             
     </Pressable>
 
     if (expanded) {
