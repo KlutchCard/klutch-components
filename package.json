@@ -1,6 +1,6 @@
 {
   "name": "@alloycard/klutch-components",
-  "version": "0.1.29-delta",
+  "version": "0.1.29-echo",
   "description": "Klutch Components for MiniApps",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -26,7 +26,7 @@
     "start": "nodemon --ext ts,tsx,js,jsx --watch src --exec bob build",
     "test": "jest",
     "typescript": "tsc --noEmit",
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "lint": "eslint --fix \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
     "release": "release-it",
     "pods": "cd example && pod-install --quiet",
