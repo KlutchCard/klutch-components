@@ -1,6 +1,6 @@
 {
   "name": "@alloycard/klutch-components",
-  "version": "0.1.27",
+  "version": "0.1.28-alpha",
   "description": "Klutch Components for MiniApps",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -66,10 +66,12 @@
     "@alloycard/alloy-js": "^1.1.23",
     "@expo-google-fonts/inter": "^0.1.0",
     "@react-native-community/hooks": "^2.6.0",
+    "@types/react-native-vector-icons": "^6.4.6",
     "expo": "~40.0.0",
     "expo-haptics": "~8.4.0",
     "moment": "^2.29.1",
     "react-native-svg": "12.1.0",
+    "react-native-vector-icons": "^8.1.0",
     "react-router-native": "^5.2.0"
   },
   "peerDependencies": {
