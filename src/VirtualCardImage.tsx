@@ -1,4 +1,4 @@
-import { Card, CardColor } from "@alloycard/alloy-js"
+import type { Card } from "@alloycard/alloy-js"
 import React from "react"
 import { StyleSheet, View, ViewProps, Image } from "react-native"
 import KText from "./KText"
@@ -9,17 +9,13 @@ export interface VirtualCardImageProps extends ViewProps {
   card: Card
 }
 
-export const VirtualCardImage: React.FC<VirtualCardImageProps> = ({card, ...props}: VirtualCardImageProps) => {
-  const style = buildStyles(card.color)
-
-  return (
-    <View style={style.cardView} {...props}>
-      <Image style={style.cardImage} source={GetCardImageSource(card)} />
-      <Logo style={style.logo} color={"black"} />
-      <KText style={style.cardName}>{card?.name}</KText>
-    </View>
-  )
-}
+export const VirtualCardImage: React.FC<VirtualCardImageProps> = ({card, ...props}: VirtualCardImageProps) => (
+  <View style={style.cardView} {...props}>
+    <Image style={style.cardImage} source={GetCardImageSource(card)} />
+    <Logo style={style.logo} color={"black"} />
+    <KText style={style.cardName}>{card?.name}</KText>
+  </View>
+)
 
 const GetCardImageSource = ({isLocked, color}: Card) => {
   if (isLocked) return require(`../assets/card/virtual/BCBCBC.png`)
@@ -41,7 +37,7 @@ const GetCardImageSource = ({isLocked, color}: Card) => {
 
 export default VirtualCardImage
 
-const buildStyles = (color: string = CardColor.BLACK) => StyleSheet.create({
+const style = StyleSheet.create({
   cardView: {
   },
   cardImage: {
@@ -55,10 +51,7 @@ const buildStyles = (color: string = CardColor.BLACK) => StyleSheet.create({
   },
   logo: {
     position: "absolute",
-    top: 50,
-    left: -10,
-    transform: [
-      { rotateZ: "270deg" }
-    ]
+    top: 20,
+    left: 45,
   }
 })

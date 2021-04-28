@@ -8,25 +8,26 @@ import Logo from "./Logo"
 
 export interface CardImageProps extends ViewProps {
   card: Card
-  isLocked?: Boolean
+  isLocked?: boolean
 }
 
 export const CardImage: React.FC<CardImageProps> = ({card, isLocked, ...props}: CardImageProps) => {
-  const style = buildStyles(card.color)
+  if (isLocked === undefined) isLocked = card.isLocked
+  const wordColor: string = (card.color === CardColor.BLACK && !(isLocked)) ? "white" : "black"
 
   return (
     <View style={{alignItems: 'center'}}>
       <View style={style.cardView} {...props}>
         <Image style={style.cardImage} source={GetCardImageSource(card, isLocked)} />
-        <Logo style={style.logo} color={(card.color === CardColor.BLACK) ? "white" : "black"} />
-        <KText style={style.cardName}>{card?.name}</KText>
+        <Logo style={style.logo} color={wordColor} />
+        <KText style={[style.cardName, {color: wordColor}]}>{card?.name}</KText>
       </View>
     </View>
   )
 }
 
-export const GetCardImageSource = (card: Card, isLocked?: Boolean) => {
-  if ((isLocked === undefined && card.isLocked === true) || isLocked === true) {
+export const GetCardImageSource = (card: Card, isLocked: boolean) => {
+  if (isLocked === true) {
     return require(`../assets/card/BCBCBC.png`)
   }
 
@@ -53,7 +54,7 @@ export const GetCardImageSource = (card: Card, isLocked?: Boolean) => {
 
 export default CardImage
 
-const buildStyles = (color: CardColor) => StyleSheet.create({
+const style = StyleSheet.create({
   cardView: {
   },
   cardImage: {
@@ -62,13 +63,12 @@ const buildStyles = (color: CardColor) => StyleSheet.create({
     position: "absolute",
     bottom: 60,
     right: 20,
-    color: (color === CardColor.BLACK ? "white" : "black"),
     textTransform: "uppercase"
   },
   logo: {
     position: "absolute",
     top: 50,
-    left: -10,
+    right: -7,
     transform: [
       { rotateZ: "270deg" }
     ]
