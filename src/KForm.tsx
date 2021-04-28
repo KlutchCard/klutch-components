@@ -76,7 +76,10 @@ const renderChildren = ({children, onValidationChanged, ...props}: PropsWithChil
         
     }
 
-    return React.Children.map(children, (child: any, i) => {         
+    return React.Children.map(children, (child: any, i) => {
+        if (!child) {
+            return child
+        }         
         if (child.props.tabOrder !== undefined) {  
             const order = child.props.tabOrder
             const c = React.cloneElement(child, {
