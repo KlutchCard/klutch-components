@@ -1,10 +1,10 @@
-import moment from "moment"
+import { DateTime } from 'luxon';
 import React, { PropsWithChildren } from "react"
 import { Text, TextProps, StyleSheet } from "react-native"
 import KlutchTheme from "./KlutchTheme"
 
 export interface KTextProps extends TextProps {
-    format?: "currency" |  "currency-smallcents" | "from-now",         
+    format?: "currency" |  "currency-smallcents" | "from-now" | "long-datetime",         
     fontWeight?: "semibold" | "bold" 
 }
 
@@ -46,7 +46,10 @@ export const KText: React.FC<KTextProps> = ({style,  format, children, fontWeigh
     if (normalizedChildren instanceof Date) {
         switch (format) {
             case "from-now": 
-                normalizedChildren = moment(normalizedChildren).fromNow()
+                normalizedChildren = DateTime.fromJSDate(normalizedChildren).toRelative() || ""
+                break;
+            case "long-datetime": 
+                normalizedChildren = DateTime.fromJSDate(normalizedChildren).toLocaleString(DateTime.DATETIME_MED)
                 break;
         }
     }

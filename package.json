@@ -44,6 +44,7 @@
     "@react-native-community/eslint-config": "^2.0.0",
     "@release-it/conventional-changelog": "^2.0.0",
     "@types/jest": "^26.0.0",
+    "@types/luxon": "^1.26.4",
     "@types/react": "^16.9.19",
     "@types/react-native": "^0.63.25",
     "@types/react-router-native": "^5.1.0",
@@ -68,7 +69,7 @@
     "@react-native-community/hooks": "^2.6.0",
     "expo": "~40.0.0",
     "expo-haptics": "~8.4.0",
-    "moment": "^2.29.1",
+    "luxon": "^1.26.0",
     "react-native-svg": "12.1.0",
     "react-router-native": "^5.2.0"
   },
@@ -139,7 +140,8 @@
     "source": "src",
     "output": "lib",
     "targets": [
-      "module"
+      "module",
+      "typescript"
     ]
   }
 }
