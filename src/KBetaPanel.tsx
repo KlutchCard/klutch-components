@@ -11,25 +11,17 @@ interface KBetaPanelProps extends ViewProps {
   onPress: () => void
 }
 
-export const KBetaPanel: React.FC<KBetaPanelProps> = ({headLine, body, onPress, ...props}: KBetaPanelProps) => {
+export const KBetaPanel: React.FC<KBetaPanelProps> = ({headLine, body, onPress}: KBetaPanelProps) => {
   const dimensions = useWindowDimensions()
   const width = dimensions.width - 2 * KlutchTheme.screen.paddingHorizontal
   const height = width * 812 / 1332
 
-  const textContainerMarginTop = 30
-  const textContainerMarginBottom = 20
-  const textContainerStyle = {
-    width: `${100*251/width}%`,
-    marginTop: textContainerMarginTop,
-    marginBottom: textContainerMarginBottom,
-    height: height - (textContainerMarginTop + textContainerMarginBottom)
+  const textContainerStyle: any = {
+    width: "67%",
+    marginTop: 30,
+    marginBottom: 20,
   }
-
-  const arrowStyle = {
-    position: "absolute",
-    right: `${100*22/width}%`,
-    bottom: `${100*22/height}%`,
-  }
+  textContainerStyle.height = height - (textContainerStyle.marginTop + textContainerStyle.marginBottom)
 
   return (
     <Pressable style={{marginTop: 15}} onPress={onPress}>
@@ -38,7 +30,7 @@ export const KBetaPanel: React.FC<KBetaPanelProps> = ({headLine, body, onPress, 
         <KText style={[styles.text, {color: "white", fontSize: 25, width: 161}]}>{headLine}</KText>
         <KText style={styles.text}>{body}</KText>
       </View>
-      <Arrow style={[styles.arrow, arrowStyle]} />
+      <Arrow style={styles.arrow} />
     </Pressable>
   )
 }
@@ -54,5 +46,9 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
   },
-  arrow: {},
+  arrow: {
+    position: "absolute",
+    right: "6%",
+    bottom: "10%",
+  },
 })
