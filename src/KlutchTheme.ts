@@ -7,12 +7,12 @@ const Colors =  {
     successColor: "#34865F",
     failureColor: "#E51A30",
     primaryButtonColor: "#687A87"
-    
+
 }
 
- 
 
-export const KlutchTheme = {    
+
+export const KlutchTheme = {
     colors: Colors,
     backgroundColor: Colors.background,
     font: {
@@ -44,7 +44,7 @@ export const KlutchTheme = {
             disabledForeGroundColor: "white",
             disabledBackGroundColor: "#B3BABF",
             pressedBackground: "#4A5A66"
-        },        
+        },
     },
     panel: {
         backgroundColor: "white"
@@ -54,7 +54,11 @@ export const KlutchTheme = {
         titleColor: "white",
         descriptionColor: Colors.secondary
     },
-    scrollWindowMargin: 100
+    scrollWindowMargin: 100,
+    screen: {
+      paddingHorizontal: 20,
+      paddingTop: 70,
+    },
 }
 
 export default KlutchTheme
