@@ -5,11 +5,11 @@ import {StyleSheet, View} from "react-native"
 import KlutchTheme from "./KlutchTheme"
 
 
-export interface KPasswordInputProps extends KTextInputProps {
+interface KPasswordInputProps extends KTextInputProps {
   checkMarkColor?: string
 }
 
-const KPasswordInput: React.FC<KPasswordInputProps> = React.forwardRef(({value, onChangeText, checkMarkColor=undefined, ...props}: KPasswordInputProps, ref) => {
+export const KPasswordInput: React.FC<KPasswordInputProps> = React.forwardRef(({value, onChangeText, checkMarkColor=undefined, ...props}: KPasswordInputProps, ref) => {
     const [currValue, setCurrValue] = useState(value)
     const [hasLetters, setHasLetters] = useState(false)
     const [hasUpper, setHasUpper] = useState(false)
