@@ -5,7 +5,11 @@ import {StyleSheet, View} from "react-native"
 import KlutchTheme from "./KlutchTheme"
 
 
-export const KPasswordInput: React.FC<KTextInputProps> = React.forwardRef(({value, onChangeText, ...props}: KTextInputProps, ref) => {
+interface KPasswordInputProps extends KTextInputProps {
+  checkMarkColor?: string
+}
+
+export const KPasswordInput: React.FC<KPasswordInputProps> = React.forwardRef(({value, onChangeText, checkMarkColor=undefined, ...props}: KPasswordInputProps, ref) => {
     const [currValue, setCurrValue] = useState(value)
     const [hasLetters, setHasLetters] = useState(false)
     const [hasUpper, setHasUpper] = useState(false)
@@ -25,34 +29,33 @@ export const KPasswordInput: React.FC<KTextInputProps> = React.forwardRef(({valu
 
     return (
         <KTextInput
-        textContentType="password"                        
+        textContentType="password"
         secureTextEntry
-        value={currValue} 
+        value={currValue}
         ref={ref as any}
         style={style.kpasswordInput}
-        onChangeText={text => passwordChangeText(text)} 
+        onChangeText={text => passwordChangeText(text)}
         {...props}>
             <View style={style.passwordTipRow}>
-                <CheckMark  />
+                <CheckMark color={checkMarkColor} />
                 <KText style={[style.passwordHint, hasLetters ? style.green: null]}>
                     Must include letters and numbers
                 </KText>
             </View>
             <View style={style.passwordTipRow}>
-                <CheckMark  />
+                <CheckMark color={checkMarkColor} />
                 <KText  style={[style.passwordHint, hasUpper ? style.green: null]}>
                     Must include upper and lower cases
                 </KText>
             </View>
             <View style={style.passwordTipRow}>
-                <CheckMark  />    
+                <CheckMark color={checkMarkColor} />
                 <KText  style={[style.passwordHint, hasAtLeast8 ? style.green: null]}>
                     Must be at least 8 characters
-                </KText>                           
-            </View> 
+                </KText>
+            </View>
         </KTextInput>
     )
-
 })
 
 
@@ -67,8 +70,8 @@ const style = StyleSheet.create({
     green: {
         color: "green"
     },
-    kpasswordInput: { 
-        height: 125,        
+    kpasswordInput: {
+        height: 125,
     },
     passwordTipRow: {
         flexDirection: "row",
