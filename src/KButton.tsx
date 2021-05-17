@@ -4,6 +4,7 @@ import { useHistory } from "react-router-native"
 import KlutchTheme from "./KlutchTheme"
 import KText from "./KText"
 import * as Haptics from 'expo-haptics';
+import KLoadingIndicator from "./KLoadingIndicator"
 
 export interface KButtonProps  {
     style?: StyleProp<ViewStyle>
@@ -80,7 +81,7 @@ export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, o
             onPress={onButtonPress}
         >
             {loading ?
-                (<ActivityIndicator size="small" color={extraLabelStyle?.color} />) :
+                (<KLoadingIndicator color={extraLabelStyle?.color}  size="small" />) :
                 (<KText style={[styles.label, extraLabelStyle, textStyle]}>{label}</KText>)}
         </Pressable>
     )

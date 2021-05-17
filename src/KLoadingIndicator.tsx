@@ -1,22 +1,31 @@
 import React, { useEffect, useRef } from "react";
-import { View, StyleSheet,  Modal, Animated, Easing } from "react-native";
+import { View, StyleSheet,  Modal, Animated, Easing, ColorValue } from "react-native";
 
 
-export const KLoadingIndicator = () => {
+export interface KLoadingIndicatorProps {
+    color?: ColorValue
+    size?: "small" | "large"
+}
+
+export const KLoadingIndicator = ({color, size, ...props}: KLoadingIndicatorProps ) => {
 
     const ball1 = useRef(new Animated.Value(0)).current;
     const ball2 = useRef(new Animated.Value(0)).current;
     const ball3 = useRef(new Animated.Value(0)).current;
 
+    var ballSize = (size === "small") ? 5: 10
+
+
     const s = StyleSheet.create({
         view: {
-            flexDirection: "row"
+            flexDirection: "row",
+            alignSelf: "center"
         },
         dot: {        
-            backgroundColor: 'black',
-            width: 10,
-            height: 10,
-            borderRadius: 10,
+            backgroundColor: color || 'black',
+            width: ballSize,
+            height: ballSize,
+            borderRadius: ballSize,
             marginHorizontal: 5
         }
         
@@ -26,7 +35,7 @@ export const KLoadingIndicator = () => {
     const animation  = (ball: Animated.Value) => Animated.loop(
         Animated.sequence([
             Animated.timing(ball, {
-                toValue: -25,
+                toValue: size == "small" ? -10 : -25,
                 duration: 200,
                 useNativeDriver: true,
                 easing: Easing.inOut(Easing.ease)
