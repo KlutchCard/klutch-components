@@ -1,9 +1,7 @@
-import React, { Component, PropsWithChildren, ReactNode, Ref, RefObject, SyntheticEvent, useRef, useState } from "react";
-import { View, StyleSheet, StyleProp, ViewStyle, TextInput } from "react-native";
-import KPasswordInput from "./KPasswordInput";
+import React, {  PropsWithChildren,  Ref,  SyntheticEvent  } from "react";
+import { View, StyleSheet, StyleProp, ViewStyle,  } from "react-native";
 import type KTextInput  from "./KTextInput";
 import {ValidationState} from "./FormValidation"
-import KText from "./KText";
 
 export interface KFormProps {    
     style?: StyleProp<ViewStyle>;
@@ -25,7 +23,8 @@ export const KForm: React.FC<KFormProps> = (props: PropsWithChildren<KFormProps>
 const renderChildren = ({children, onValidationChanged, ...props}: PropsWithChildren<KFormProps>) => {
 
     const childCount = React.Children.count(children)
-    const myRefs  = new Array<KTextInput>()
+    const myRefs  = new Array<KTextInput>()    
+    
     
 
     const onSubmitEditing = (event: SyntheticEvent, order: number) => {        
@@ -75,6 +74,7 @@ const renderChildren = ({children, onValidationChanged, ...props}: PropsWithChil
         }
         
     }
+
 
     return React.Children.map(children, (child: any, i) => {
         if (!child) {
