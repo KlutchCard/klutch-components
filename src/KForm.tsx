@@ -101,6 +101,7 @@ export default KForm
 
 const styles = StyleSheet.create({
     kform: {
-        flex: 1,        
+        flexGrow: 1,        
+        flexShrink: 0
     }
 })
