@@ -7,7 +7,7 @@ import { KModalContext } from "./KModal";
 
 
 export const KScrollView = React.forwardRef<ScrollView, PropsWithChildren<ScrollViewProps>>(({children, ...props}: PropsWithChildren<ScrollViewProps>, ref) =>  {
-    const height = useWindowDimensions().height - KlutchTheme.scrollWindowMargin
+    const height = useWindowDimensions().height -  KlutchTheme.scrollWindowMargin
     
     const keyboard = useKeyboard()
 
