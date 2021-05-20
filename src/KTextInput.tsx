@@ -2,7 +2,7 @@ import React, {  RefAttributes, RefObject } from "react"
 import {  TextInput, TextInputProps, View, StyleSheet, Pressable, StyleProp, TextStyle, ScrollView, findNodeHandle, NativeSyntheticEvent, TextInputFocusEventData } from "react-native"
 import KlutchTheme from "./KlutchTheme"
 import KText from "./KText"
-import {validate, Validation, ValidationState, ValidationType} from "./FormValidation"
+import {validate, Validation, ValidationResult, ValidationState, ValidationType} from "./FormValidation"
 import { Inter_900Black } from "@expo-google-fonts/inter"
 import Svg, { Path } from "react-native-svg"
 import KScrollScreen from "./KScrollScreen"
@@ -33,8 +33,8 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
 
     constructor(props: KTextInputProps) {
         super(props)
-        this.state = {
-            valid: ValidationState.PRISTINE
+        this.state = {            
+            valid: (props.isOptional) ? ValidationState.VALID : ValidationState.PRISTINE
         }
     }
 
@@ -105,9 +105,13 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
 
 
     validateComponent() {
-        const {value, onValidationChanged, onBlur} = this.props
-
-        const valid = validate(value, this.props.validations)
+        const {label, value, onValidationChanged, onBlur, isOptional} = this.props
+        var valid: ValidationResult
+        if (isOptional && value.trim() == "")  {            
+            valid = {valid: ValidationState.VALID, errorMessage: undefined}
+        } else {
+            valid = validate(value, this.props.validations)
+        }       
         this.setState(valid, () => {
             onValidationChanged && onValidationChanged(valid.valid)
         })
