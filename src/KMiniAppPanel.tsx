@@ -5,14 +5,15 @@ import { View, StyleSheet } from "react-native"
 
 
 export interface KTransactionPanelProps {
-    recipeName: string
+    recipeName: string,
+    panelStyle: "transaction" | "home"
 }
 
-export const KTransactionPanel: React.FC<KTransactionPanelProps> = ({recipeName, children, ...props} : PropsWithChildren<KTransactionPanelProps>) => {
-
+export const KMiniAppPanel: React.FC<KTransactionPanelProps> = ({recipeName, children, panelStyle, ...props} : PropsWithChildren<KTransactionPanelProps>) => {
+    
 
     return (
-        <View style={style.kTransactionPanel}>
+        <View style={[style.kTransactionPanel, (panelStyle == "home" && style.homePanel)]}>
             <KText style={style.recipeName} fontWeight="semibold">{recipeName}</KText>
             <View style={{flex: 1}}>                
                 {children}
@@ -21,7 +22,7 @@ export const KTransactionPanel: React.FC<KTransactionPanelProps> = ({recipeName,
     )    
 }
 
-export default KTransactionPanel
+export default KMiniAppPanel
 
 const style = StyleSheet.create({
     kTransactionPanel: {
@@ -31,6 +32,9 @@ const style = StyleSheet.create({
         backgroundColor: "white",
         paddingVertical: 5,
         paddingHorizontal: 10       
+    },
+    homePanel: {
+        height: 200
     },
     recipeName: {
         textTransform: "uppercase",
