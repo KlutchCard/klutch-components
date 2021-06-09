@@ -45,7 +45,7 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
             event.target.measureLayout(findNodeHandle(autoScrollOnFocus as any ), (x: any, y: any, width: any, height: any) => {
                 autoScrollOnFocus?.scrollTo({x: x, y:  y - 20})
             }, (f: any) => {
-                console.log(f)
+              
             })
         }
         onFocus && onFocus(event)

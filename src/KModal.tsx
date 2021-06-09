@@ -18,6 +18,5 @@ export default KModal
 
 const st = StyleSheet.create({
     modal: {
-        marginBottom: 30
     }
 })
