@@ -18,6 +18,7 @@ export interface KTextInputProps extends TextInputProps, RefAttributes<typeof KT
     textStyle?: StyleProp<TextStyle>
     labelContainerStyle?: StyleProp<ViewStyle>
     labelStyle?: StyleProp<TextStyle>
+    errorMessageStyle?: StyleProp<TextStyle>
     autoScrollOnFocus?: ScrollView | null
     isOptional?: boolean
 }
@@ -56,7 +57,8 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
 
     render() {
 
-        const {style, label, children, showValid, textContainerStyle, textStyle, labelContainerStyle, labelStyle, multiline, isOptional, onBlur, ...textProps} = this.props
+        const {style, label, children, showValid, textContainerStyle, textStyle,
+            labelContainerStyle, labelStyle, errorMessageStyle, multiline, isOptional, onBlur, ...textProps} = this.props
         const {valid, errorMessage} = this.state
 
         let validLabel = null
@@ -77,7 +79,7 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
                     {isOptional ? <KText style={styles.optionalLabel}>{"\tOPTIONAL"}</KText> : null}
                 </View>
                 <View style={[
-                        styles.textInputRow,
+                        styles.textInputContainer,
                         textContainerStyle,
                         valid === ValidationState.ERROR ? styles.ktextInputError : null,
                         multiline ? styles.textInputRowMultiLine: null
@@ -93,7 +95,7 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
                         {...textProps as TextInputProps}/>
                     {validLabel}
                 </View>
-                <KText style={styles.errorMessage}>{errorMessage ?? ""}</KText>
+                <KText style={[styles.errorMessage, errorMessageStyle]}>{errorMessage ?? ""}</KText>
                 {children}
             </Pressable>
         )
@@ -193,7 +195,7 @@ const styles = StyleSheet.create({
         color: KlutchTheme.colors.failureColor,
         fontSize: KlutchTheme.font.smallSize
     },
-    textInputRow: {
+    textInputContainer: {
         flexDirection: "row",
         marginBottom: 3,
         flex: 1
