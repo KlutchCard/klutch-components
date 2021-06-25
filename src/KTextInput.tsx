@@ -1,5 +1,5 @@
 import React, {  RefAttributes, RefObject } from "react"
-import {  TextInput, TextInputProps, View, StyleSheet, Pressable, StyleProp, TextStyle, ScrollView, findNodeHandle, NativeSyntheticEvent, TextInputFocusEventData } from "react-native"
+import {  TextInput, TextInputProps, View, StyleSheet, Pressable, StyleProp, TextStyle, ScrollView, findNodeHandle, NativeSyntheticEvent, TextInputFocusEventData, ViewStyle } from "react-native"
 import KlutchTheme from "./KlutchTheme"
 import KText from "./KText"
 import {validate, Validation, ValidationResult, ValidationState, ValidationType} from "./FormValidation"
@@ -14,9 +14,11 @@ export interface KTextInputProps extends TextInputProps, RefAttributes<typeof KT
     value: string
     onValidationChanged?: (valid: ValidationState) => void
     showValid?: boolean
-    textContainerStyle?: StyleProp<TextStyle>
+    textContainerStyle?: StyleProp<ViewStyle>
     textStyle?: StyleProp<TextStyle>
+    labelContainerStyle?: StyleProp<ViewStyle>
     labelStyle?: StyleProp<TextStyle>
+    errorMessageStyle?: StyleProp<TextStyle>
     autoScrollOnFocus?: ScrollView | null
     isOptional?: boolean
 }
@@ -33,7 +35,7 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
 
     constructor(props: KTextInputProps) {
         super(props)
-        this.state = {            
+        this.state = {
             valid: (props.isOptional) ? ValidationState.VALID : ValidationState.PRISTINE
         }
     }
@@ -45,7 +47,7 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
             event.target.measureLayout(findNodeHandle(autoScrollOnFocus as any ), (x: any, y: any, width: any, height: any) => {
                 autoScrollOnFocus?.scrollTo({x: x, y:  y - 20})
             }, (f: any) => {
-              
+
             })
         }
         onFocus && onFocus(event)
@@ -55,7 +57,8 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
 
     render() {
 
-        const {style, label, children,  showValid, textContainerStyle, textStyle, labelStyle, multiline, isOptional, onBlur, ...textProps} = this.props
+        const {style, label, children, showValid, textContainerStyle, textStyle,
+            labelContainerStyle, labelStyle, errorMessageStyle, multiline, isOptional, onBlur, ...textProps} = this.props
         const {valid, errorMessage} = this.state
 
         let validLabel = null
@@ -71,12 +74,12 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
 
         return (
             <Pressable style={[styles.ktextInput, style]} onPress={() => this.onPressed()}>
-                <View style={styles.labelContainer}>
+                <View style={[styles.labelContainer, labelContainerStyle]}>
                     <KText style={[styles.label, labelStyle]}>{label}</KText>
                     {isOptional ? <KText style={styles.optionalLabel}>{"\tOPTIONAL"}</KText> : null}
                 </View>
                 <View style={[
-                        styles.textInputRow,
+                        styles.textInputContainer,
                         textContainerStyle,
                         valid === ValidationState.ERROR ? styles.ktextInputError : null,
                         multiline ? styles.textInputRowMultiLine: null
@@ -92,7 +95,7 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
                         {...textProps as TextInputProps}/>
                     {validLabel}
                 </View>
-                <KText style={styles.errorMessage}>{errorMessage ?? ""}</KText>
+                <KText style={[styles.errorMessage, errorMessageStyle]}>{errorMessage ?? ""}</KText>
                 {children}
             </Pressable>
         )
@@ -107,11 +110,11 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
     validateComponent() {
         const {label, value, onValidationChanged, onBlur, isOptional} = this.props
         var valid: ValidationResult
-        if (isOptional && value.trim() == "")  {            
+        if (isOptional && value.trim() == "")  {
             valid = {valid: ValidationState.VALID, errorMessage: undefined}
         } else {
             valid = validate(value, this.props.validations)
-        }       
+        }
         this.setState(valid, () => {
             onValidationChanged && onValidationChanged(valid.valid)
         })
@@ -192,7 +195,7 @@ const styles = StyleSheet.create({
         color: KlutchTheme.colors.failureColor,
         fontSize: KlutchTheme.font.smallSize
     },
-    textInputRow: {
+    textInputContainer: {
         flexDirection: "row",
         marginBottom: 3,
         flex: 1
