@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useState } from "react"
-import { Pressable, View, StyleSheet, ViewProps, ScrollView, StyleProp, TextStyle } from "react-native"
+import { Pressable, View, StyleSheet, ViewProps, ScrollView, StyleProp, TextStyle, ViewStyle, PressableProps } from "react-native"
 import KlutchTheme from "./KlutchTheme"
 import KText from "./KText"
 
@@ -10,15 +10,25 @@ export interface KSelectInputProps extends ViewProps {
     value: string,
     displayValue?: string,
     data: string[],
+    style?: StyleProp<PressableProps>
     selectStyle?: StyleProp<TextStyle>
     labelStyle?: StyleProp<TextStyle>
     valueStyle?: StyleProp<TextStyle>
+    expandedContainerStyle?: StyleProp<ViewStyle>
+    expandedChildrenStyle?: StyleProp<ViewStyle>
+    expandedScrollStyle?: StyleProp<ViewStyle>
+    expandedButtonStyle?: StyleProp<PressableProps>
+    expandedButtonTextStyle?: StyleProp<TextStyle>
     onSelectionChanged?: (value: string) => void
 }
 
 
 export const KSelectInput: React.FC<KSelectInputProps> = (
-    {label, isOptional, style, labelStyle, selectStyle, valueStyle, value, data, onSelectionChanged, displayValue, children, ...props} : PropsWithChildren<KSelectInputProps>) => {
+    {
+        label, isOptional, style, labelStyle, selectStyle, valueStyle, value, data,
+        onSelectionChanged, displayValue, children, expandedContainerStyle, expandedChildrenStyle,
+        expandedScrollStyle, expandedButtonStyle, expandedButtonTextStyle, ...props
+    } : PropsWithChildren<KSelectInputProps>) => {
     
     const [expanded, setExpanded] = useState(false)
 
@@ -42,16 +52,20 @@ export const KSelectInput: React.FC<KSelectInputProps> = (
 
     if (expanded) {
         return (
-            <View style={styles.expandedView}>
+            <View style={[styles.expandedView, expandedContainerStyle]}>
                 {InputComponent}
-                <View style={styles.extraComponents}>
+                <View style={[styles.extraComponents, expandedChildrenStyle]}>
                     {children}
                 </View>
-                <View style={styles.expandedOptions}>
+                <View style={[styles.expandedOptions, expandedScrollStyle]}>
                     <ScrollView contentContainerStyle={{justifyContent: "flex-end", minHeight: "100%"}} bounces={false} showsVerticalScrollIndicator={false}>
                         {data.map(c => 
-                            <Pressable onPress={() => selectionPressed(c)} key={c} style={[styles.options, c === value && styles.optionsSelected] }>
-                                <KText style={[c === value && styles.optionsSelectedText]}>{c}</KText>
+                            <Pressable
+                                onPress={() => selectionPressed(c)}
+                                key={c}
+                                style={[styles.options, c === value && styles.optionsSelected, expandedButtonStyle]}
+                            >
+                                <KText style={[c === value && styles.optionsSelectedText, expandedButtonTextStyle]}>{c}</KText>
                             </Pressable>
                         )}
                     </ScrollView>
