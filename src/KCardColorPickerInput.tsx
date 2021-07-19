@@ -6,6 +6,8 @@ import CardImage from "./CardImage"
 import KText from "./KText"
 
 
+export const ValidColors = Object.keys(CardColor).filter(c => (![CardColor.GRAY, CardColor.BLACK].includes(CardColor[c as keyof typeof CardColor])))
+
 export interface KCardColorPickerInputProps extends ViewProps {
     label: string
     isOptional?: boolean,
@@ -43,8 +45,6 @@ export const KCardColorPickerInput: React.FC<KCardColorPickerInputProps> = (
         <KText style={styles.errorMessage}></KText>             
     </Pressable>
 
-    const validColors = Object.keys(CardColor).filter(c => (![CardColor.GRAY, CardColor.BLACK].includes(CardColor[c as keyof typeof CardColor])))
-
     if (expanded) {
         return (
             <View style={styles.expandedView}>
@@ -54,7 +54,7 @@ export const KCardColorPickerInput: React.FC<KCardColorPickerInputProps> = (
                 </View>
                 <View style={styles.expandedOptions}>
                     <ScrollView contentContainerStyle={{justifyContent: "flex-end", minHeight: "100%"}} bounces={false} showsHorizontalScrollIndicator={false}  horizontal>
-                        {validColors.map(c => (
+                        {ValidColors.map(c => (
                                 <Pressable onPress={() => selectionPressed(c)}>
                                     <CardImage key={c} style={styles.cardImage} card={{                                    
                                         color: CardColor[c as keyof typeof CardColor],                                        
