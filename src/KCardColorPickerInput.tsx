@@ -55,7 +55,7 @@ export const KCardColorPickerInput: React.FC<KCardColorPickerInputProps> = (
                 <View style={styles.expandedOptions}>
                     <ScrollView contentContainerStyle={{justifyContent: "flex-end", minHeight: "100%"}} bounces={false} showsHorizontalScrollIndicator={false}  horizontal>
                         {ValidColors.map(c => (
-                                <Pressable onPress={() => selectionPressed(c)}>
+                                <Pressable key={`colorOption${c}`} onPress={() => selectionPressed(c)}>
                                     <CardImage key={c} style={styles.cardImage} card={{                                    
                                         color: CardColor[c as keyof typeof CardColor],                                        
                                     } as any}  />
