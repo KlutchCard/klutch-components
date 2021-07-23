@@ -26,12 +26,13 @@ export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveDa
         <Image style={style.cardImage} source={GetCardImageSource(card, isLocked)} />
             {showSensitiveData ?
                 <View style={[style.sensitiveData, { height: 210, justifyContent: "space-between" }]}>
-                    <KText style={{ lineHeight: 18, color: wordColor }}>
+                    <KText style={[style.sensitiveDataText, { color: wordColor }]}>
                         {`${cardNumber.substring(0, 4)}\n${cardNumber.substring(4, 8)}\n${cardNumber.substring(8, 12)}\n${cardNumber.substring(12, 16)}`}
                     </KText>
                     <View>
-                        <KText>{`CVV ${cvv}`}</KText>
-                        <KText>{`EXP ${card.expirationDate}`}</KText>
+                        <KText style={[style.sensitiveDataText, { color: wordColor }]}>
+                            {`CVV ${cvv}\nEXP ${card.expirationDate}`}
+                        </KText>
                     </View>
                 </View>
                 :
@@ -43,7 +44,7 @@ export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveDa
                             marginVertical: 3,
                         }} />
                     ))}
-                    <KText style={{ lineHeight: 18, color: wordColor }}>{card.lastFour}</KText>
+                    <KText style={[style.sensitiveDataText, { color: wordColor }]}>{card.lastFour}</KText>
                 </View>
             }
         <Logo style={style.logo} color={wordColor} />
@@ -90,6 +91,9 @@ const style = StyleSheet.create({
     position: "absolute",
     paddingVertical: 20,
     paddingLeft: 20,
+  },
+  sensitiveDataText: {
+    lineHeight: 18
   },
   cardName: {
     position: "absolute",
