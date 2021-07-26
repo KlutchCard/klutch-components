@@ -37,8 +37,8 @@ export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveDa
                 </View>
                 :
                 <View style={style.sensitiveData}>
-                    {[1, 2, 3].map(() => (
-                        <View style={{
+                    {[1, 2, 3].map((n) => (
+                        <View key={`hidden-numbers-bar-${n}`} style={{
                             height: 7,
                             backgroundColor: "black",
                             marginVertical: 3,
