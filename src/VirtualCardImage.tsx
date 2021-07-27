@@ -13,7 +13,13 @@ export const VirtualCardImage: React.FC<VirtualCardImageProps> = ({card, ...prop
   <View style={style.cardView} {...props}>
     <Image style={style.cardImage} source={GetCardImageSource(card)} />
     <Logo style={style.logo} color={"black"} />
-    <KText style={style.cardName}>{card?.name}</KText>
+    <View style={style.cardContent}>
+        <KText style={{ textTransform: "uppercase", marginVertical: 3 }} numberOfLines={2}>{card.name}</KText>
+        {[1, 2, 3].map((n) => (
+            <View key={`hidden-numbers-bar-${n}`} style={style.hiddenBars} />
+        ))}
+        <KText style={{ fontSize: 12 }}>{card.lastFour}</KText>
+    </View>
   </View>
 )
 
@@ -42,12 +48,16 @@ const style = StyleSheet.create({
   },
   cardImage: {
   },
-  cardName: {
+  cardContent: {
     position: "absolute",
     bottom: 60,
-    right: 20,
-    color: "black",
-    textTransform: "uppercase"
+    marginHorizontal: 20,
+  },
+  hiddenBars: {
+    height: 7,
+    width: 28,
+    backgroundColor: "black",
+    marginVertical: 3,
   },
   logo: {
     position: "absolute",
