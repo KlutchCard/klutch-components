@@ -1,6 +1,7 @@
 import { Card, CardColor, CardMedia } from "@alloycard/alloy-js"
 import React from "react"
-import { StyleSheet, View, ViewProps, Image } from "react-native"
+import { StyleSheet, View, ViewProps, Image, ActivityIndicator } from "react-native"
+import KLoadingIndicator from "./KLoadingIndicator"
 import KText from "./KText"
 import Logo from "./Logo"
 
@@ -14,9 +15,10 @@ export interface CardImageProps extends ViewProps {
     cvv?: string
   }
   showSensitiveData?: boolean
+  loading?: boolean
 }
 
-export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveData: { cardNumber = "", cvv = "" } = {}, showSensitiveData = false, ...props}: CardImageProps) => {
+export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveData: { cardNumber = "", cvv = "" } = {}, showSensitiveData = false, loading = false,  ...props}: CardImageProps) => {
   if (isLocked === undefined) isLocked = card.isLocked
   const wordColor: string = (card.color === CardColor.BLACK && !(isLocked)) ? "white" : "black"
 
@@ -24,7 +26,12 @@ export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveDa
     <View style={{alignItems: 'center'}}>
       <View style={style.cardView} {...props}>
         <Image style={style.cardImage} source={GetCardImageSource(card, isLocked)} />
-            {showSensitiveData ?
+            {loading && (
+              <View style={{position: "absolute", left: 130, top: 100}}>
+                <KLoadingIndicator  />
+              </View>
+            )}      
+            {(showSensitiveData  && cardNumber && cvv) ?
                 <View style={[style.sensitiveData, { height: 210, justifyContent: "space-between" }]}>
                     <KText style={[style.sensitiveDataText, { color: wordColor }]}>
                         {`${cardNumber.substring(0, 4)}\n${cardNumber.substring(4, 8)}\n${cardNumber.substring(8, 12)}\n${cardNumber.substring(12, 16)}`}
@@ -93,7 +100,8 @@ const style = StyleSheet.create({
     paddingLeft: 20,
   },
   sensitiveDataText: {
-    lineHeight: 18
+    lineHeight: 18,
+    fontFamily: "monospace"
   },
   cardName: {
     position: "absolute",
