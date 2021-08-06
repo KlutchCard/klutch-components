@@ -6,7 +6,8 @@ const Colors =  {
     background: "#F5F5F5",
     successColor: "#34865F",
     failureColor: "#E51A30",
-    primaryButtonColor: "#687A87"
+    primaryButtonColor: "#687A87",
+    failureonBlackColor: "FD475A"
 
 }
 
@@ -26,7 +27,8 @@ export const KlutchTheme = {
     header: {
         color: Colors.primary,
         fontFamily: "Inter_700Bold",
-        size: 30
+        size: 30,
+        smallSize: 25
     },
     form: {
         label: {
