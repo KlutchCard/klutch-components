@@ -118,6 +118,7 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
         this.setState(valid, () => {
             onValidationChanged && onValidationChanged(valid.valid)
         })
+        return valid
     }
 
     private componentBlurred = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {

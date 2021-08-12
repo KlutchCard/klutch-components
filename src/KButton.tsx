@@ -74,7 +74,7 @@ export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, o
 
     return (
         <Pressable
-            disabled={disabled || loading}
+            disabled={loading}
             style={[styles.kbutton,  extraStyle, style]}
             onPressOut={() => setPressed(false)}
             onPressIn={() => onPressIn()}

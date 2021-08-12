@@ -18,7 +18,11 @@ export const KScrollView = React.forwardRef<ScrollView, PropsWithChildren<Scroll
             flexGrow: 1,             
         }
     return (
-        <ScrollView ref={ref as any} contentContainerStyle={scrollViewStyle} bounces={false} showsVerticalScrollIndicator={false}  {...props} >
+        <ScrollView ref={ref as any} 
+            contentContainerStyle={scrollViewStyle} 
+            bounces={false} 
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}  {...props} >
             <View style={{minHeight: height, flexGrow: 1}}>
                 {children}
             </View>
