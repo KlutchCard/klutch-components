@@ -31,7 +31,8 @@ export const KText: React.FC<KTextProps> = ({style,  format, children, fontWeigh
                 normalizedChildren =  normalizedChildren.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/gm, "$1,")
                 break;
             case "currency-smallcents": 
-                var dollars =  (Math.floor(normalizedChildren) + "").replace(/(\d)(?=(\d{3})+(?!\d))/gm, "$1,")
+                var wholeDollars = normalizedChildren > 0 ? Math.floor(normalizedChildren): Math.ceil(normalizedChildren)
+                var dollars =  (wholeDollars + "").replace(/(\d)(?=(\d{3})+(?!\d))/gm, "$1,")
                 var cents = (normalizedChildren.toFixed(2)  + "").slice(-2)
                 normalizedChildren = (  
                     <>
