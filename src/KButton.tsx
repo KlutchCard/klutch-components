@@ -91,9 +91,9 @@ export default KButton
 
 const styles = StyleSheet.create({
     kbutton: {
-        flex: 1,
+        flex: 0,        
         alignContent: "center",
-        justifyContent: "center",
+        justifyContent: "center",   
         height: 50,
     },
     primary: {
