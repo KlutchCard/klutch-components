@@ -1,6 +1,6 @@
 import { Card, CardColor, CardMedia } from "@alloycard/alloy-js"
 import React from "react"
-import { StyleSheet, View, ViewProps, Image, ActivityIndicator } from "react-native"
+import { StyleSheet, View, ViewProps, Image, ActivityIndicator, Platform } from "react-native"
 import KLoadingIndicator from "./KLoadingIndicator"
 import KText from "./KText"
 import Logo from "./Logo"
@@ -101,7 +101,7 @@ const style = StyleSheet.create({
   },
   sensitiveDataText: {
     lineHeight: 18,
-    fontFamily: "monospace"
+    fontFamily: Platform.OS === "ios" ? "Menlo":   "monospace"
   },
   cardName: {
     position: "absolute",
