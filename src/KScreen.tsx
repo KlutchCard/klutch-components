@@ -18,10 +18,11 @@ const styles = StyleSheet.create({
     kview: {
         flexGrow: 1,
         flexShrink: 0,
+        flexBasis: "100%",
         width: "100%",
         backgroundColor: KlutchTheme.backgroundColor,
         paddingHorizontal: KlutchTheme.screen.paddingHorizontal,
         paddingTop: KlutchTheme.screen.paddingTop,
-        height: "100%"
+        //height: "100%"
     }
 })
