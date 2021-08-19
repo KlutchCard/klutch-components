@@ -3,7 +3,9 @@ import React, { PropsWithChildren } from "react"
 import { Text, TextProps, StyleSheet } from "react-native"
 import KlutchTheme from "./KlutchTheme"
 
+//@ts-ignore
 if (Text.defaultProps == null) Text.defaultProps = {};
+//@ts-ignore
 Text.defaultProps.allowFontScaling = false; 
 
 export interface KTextProps extends TextProps {
