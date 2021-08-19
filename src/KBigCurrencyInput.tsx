@@ -1,50 +1,35 @@
-import React, { useState } from "react"
-import { ValidationType } from "./FormValidation"
-import KBigTextInput, { KBigTextInputProps } from "./KBigTextInput"
+import React from "react"
+import CurrencyInput from "react-native-currency-input";
+import { StyleProp, TextStyle, StyleSheet } from "react-native";
+import { KlutchTheme } from "./KlutchTheme";
 
-export interface KBigCurrencyInputProps extends KBigTextInputProps {
+export interface KBigCurrencyInputProps {
+    style?: StyleProp<TextStyle>;
     amount: number,
     onAmountChanged?: (amount: number) => void
 }
 
 
-export const KBigCurrencyInput: React.FC<KBigCurrencyInputProps> = ({amount, value, onAmountChanged, onChangeText, ...props} : KBigCurrencyInputProps) => {
-    
-    const [lastPeriod, setLastPeriod] = useState(false)
-
-
-    const normalizeAmount = (value: string) => {        
-        const currValueMatch = value.match(/(\d+(\.\d{0,2})?)(.*)/m)
-        var currValue = value
-        if (!currValueMatch) {
-            return {value: `$0`, amount: 0}
-        }
-        currValue = currValueMatch[1]
-        
-        
-
-        setLastPeriod(currValue.endsWith("."))
-
-        const number = +currValue 
-        return {value: `$${currValue}`, amount: +currValue}
-    }
-    
-
-    const onTextChanged = (text: string) => {
-        const newAmount =  normalizeAmount(text) ?? text
-        onAmountChanged && onAmountChanged(newAmount.amount)
-        onChangeText && onChangeText(newAmount.value)
-    }
-
+export const KBigCurrencyInput: React.FC<KBigCurrencyInputProps> = ({ amount, onAmountChanged, style, ...props }: KBigCurrencyInputProps) => {
     return (
-    <KBigTextInput 
-        value={"$" + amount + (lastPeriod ? ".": "")}        
-        onChangeText={onTextChanged}
-        keyboardType="numeric"
-        placeholder="$0.00"         
-        {...props}
-                  
-    />)
+        <CurrencyInput
+            style={[styles.text, style]}
+            value={amount}
+            onChangeValue={onAmountChanged}
+            prefix="$"
+            delimiter=","
+            separator="."
+            precision={2}
+            {...props}
+        />
+    );
 }
 
 export default KBigCurrencyInput
+
+const styles = StyleSheet.create({
+    text: {
+        fontSize: 55,
+        fontFamily: KlutchTheme.font.semiBoldFontFamily,
+    },
+})
