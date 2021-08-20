@@ -19,7 +19,7 @@ export interface CardImageProps extends ViewProps {
 }
 
 export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveData: { cardNumber = "", cvv = "" } = {}, showSensitiveData = false, loading = false,  ...props}: CardImageProps) => {
-  if (isLocked === undefined) isLocked = card.cardLockState == "LOCKED"
+  if (isLocked === undefined) isLocked = card.lockState == "LOCKED"
   const wordColor: string = (card.color === CardColor.BLACK && !(isLocked)) ? "white" : "black"
 
   return (

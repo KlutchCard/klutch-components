@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@alloycard/alloy-js@^1.4.9":
-  version "1.4.9"
-  resolved "https://npm.pkg.github.com/download/@alloycard/alloy-js/1.4.9/6127bdf3f37fa6a9b05087d564e65c5416483b939255521ee1f1f5c3805f102b#5defafe8fdceec0492811b2fb9864bcc762a0137"
-  integrity sha512-C2MJGLN5lxKuABwTdV4FQXGU52FopXiEP0GIoH/OXWKN7PfXzgAADVy/Jq41Ej4U+WJiUIUlklADeiVM2wlzeA==
+"@alloycard/alloy-js@^1.4.15":
+  version "1.4.15"
+  resolved "https://npm.pkg.github.com/download/@alloycard/alloy-js/1.4.15/8ed9dcbac074204d659334340ae787a2c33bb7b704d09c5ef56317721fd134e0#9287b879ee0be62785d7c2f780f1900c85d46ebb"
+  integrity sha512-Jas1CyFEhocDzBey6kN0f70ploV5s2PZIdZ7yc+VnvRR5LwuZ18KWG8Va4rsX68Z+3GguR0K+6au+MPuFxdZFg==
   dependencies:
     "@apollo/client" "^3.3.19"
     axios "^0.21.1"

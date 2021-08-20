@@ -23,8 +23,8 @@ export const VirtualCardImage: React.FC<VirtualCardImageProps> = ({card, ...prop
   </View>
 )
 
-const GetCardImageSource = ({cardLockState, color}: Card) => {
-  if (cardLockState) return require(`../assets/card/virtual/BCBCBC.png`)
+const GetCardImageSource = ({lockState, color}: Card) => {
+  if (lockState) return require(`../assets/card/virtual/BCBCBC.png`)
 
   switch(color.valueOf()){
     case "#FFB131": return require(`../assets/card/virtual/FFB131.png`)
