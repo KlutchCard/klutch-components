@@ -44,7 +44,7 @@ export const KlutchTheme = {
             backgroundColor: Colors.primaryButtonColor,
             foreGroundColor: Colors.background,
             disabledForeGroundColor: "white",
-            disabledBackGroundColor: "#B3BABF",
+            disabledBackGroundColor: Colors.primaryButtonColor,
             pressedBackground: "#4A5A66"
         },
     },
