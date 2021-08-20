@@ -1,6 +1,6 @@
 {
   "name": "@alloycard/klutch-components",
-  "version": "0.1.64",
+  "version": "0.1.66",
   "description": "Klutch Components for MiniApps",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -70,6 +70,7 @@
     "expo": "^42.0.0",
     "expo-haptics": "~10.1.0",
     "luxon": "^1.26.0",
+    "react-native-currency-input": "^1.0.1",
     "react-native-svg": "12.1.1",
     "react-router-native": "^5.2.0"
   },
