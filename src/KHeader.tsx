@@ -25,7 +25,7 @@ export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArr
     return (
         <View style={[styles.kheader, style]}>
             {showBackArrow ? (
-                <Pressable style={styles.arrow} onPress={backArrowPressed} hitSlop={30}> 
+                <Pressable style={styles.arrow} onPress={backArrowPressed} hitSlop={50}> 
                     <BackArrow />
                 </Pressable>
             ): null}
@@ -57,9 +57,13 @@ const styles = StyleSheet.create({
         textTransform: "uppercase",
         fontFamily: KlutchTheme.header.fontFamily,
         fontSize: KlutchTheme.header.size,   
-        letterSpacing: 0.7     
+        letterSpacing: 0.7,
+        textAlign: "center",
+        flex: 1,      
+        marginLeft: -16  
     },
-    arrow: {
-        marginRight: 20        
+    arrow: {                
+        flexBasis: 16,
+        zIndex: 1        
     }
 })
