@@ -29,7 +29,7 @@ export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArr
                     <BackArrow />
                 </Pressable>
             ): null}
-            <KText style={[styles.kheaderText, textStyle]} {...props} />    
+            <KText style={[showBackArrow &&  {marginLeft: -16}, styles.kheaderText, textStyle]} {...props} />    
         </View>
     )
 }
@@ -59,8 +59,7 @@ const styles = StyleSheet.create({
         fontSize: KlutchTheme.header.size,   
         letterSpacing: 0.7,
         textAlign: "center",
-        flex: 1,      
-        marginLeft: -16  
+        flex: 1,            
     },
     arrow: {                
         flexBasis: 16,

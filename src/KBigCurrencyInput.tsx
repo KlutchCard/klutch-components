@@ -1,20 +1,23 @@
 import React from "react"
-import CurrencyInput from "react-native-currency-input";
+import CurrencyInput, { CurrencyInputProps } from "react-native-currency-input";
 import { StyleProp, TextStyle, StyleSheet } from "react-native";
 import { KlutchTheme } from "./KlutchTheme";
+import type { Validation, ValidationState } from "./FormValidation";
+import type { KTextInputProps } from "./KTextInput";
 
-export interface KBigCurrencyInputProps {
+export interface KBigCurrencyInputProps extends CurrencyInputProps {
     style?: StyleProp<TextStyle>;
-    amount: number,
     onAmountChanged?: (amount: number) => void
+    onValidationChanged?: (valid: ValidationState) => void
+    validations?: Array<Validation>
 }
 
 
-export const KBigCurrencyInput: React.FC<KBigCurrencyInputProps> = ({ amount, onAmountChanged, style, ...props }: KBigCurrencyInputProps) => {
+export const KBigCurrencyInput: React.FC<KBigCurrencyInputProps> = ({ value, onAmountChanged, style, ...props }: KBigCurrencyInputProps) => {
     return (
         <CurrencyInput
             style={[styles.text, style]}
-            value={amount}
+            value={value}
             onChangeValue={onAmountChanged}
             prefix="$"
             delimiter=","
