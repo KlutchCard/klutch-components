@@ -1,4 +1,4 @@
-import type { Card } from "@alloycard/alloy-js"
+import type { Card, CardLockState } from "@alloycard/alloy-js"
 import React from "react"
 import { StyleSheet, View, ViewProps, Image } from "react-native"
 import KText from "./KText"
@@ -24,7 +24,7 @@ export const VirtualCardImage: React.FC<VirtualCardImageProps> = ({card, ...prop
 )
 
 const GetCardImageSource = ({lockState, color}: Card) => {
-  if (lockState) return require(`../assets/card/virtual/BCBCBC.png`)
+  if (lockState == "LOCKED" || lockState == 'LOCKING') return require(`../assets/card/virtual/BCBCBC.png`)
 
   switch(color.valueOf()){
     case "#FFB131": return require(`../assets/card/virtual/FFB131.png`)
