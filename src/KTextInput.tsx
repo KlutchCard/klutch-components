@@ -1,5 +1,5 @@
 import React, {  RefAttributes, RefObject } from "react"
-import {  TextInput, TextInputProps, View, StyleSheet, Pressable, StyleProp, TextStyle, ScrollView, findNodeHandle, NativeSyntheticEvent, TextInputFocusEventData, ViewStyle } from "react-native"
+import {  TextInput, TextInputProps, View, StyleSheet, Pressable, StyleProp, TextStyle, ScrollView, findNodeHandle, NativeSyntheticEvent, TextInputFocusEventData, ViewStyle, Keyboard } from "react-native"
 import KlutchTheme from "./KlutchTheme"
 import KText from "./KText"
 import {validate, Validation, ValidationResult, ValidationState, ValidationType} from "./FormValidation"
@@ -92,6 +92,7 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
                         onFocus={event => this.textInputFocused(event)}
                         multiline={multiline}
                         ref={this.textInputRef}
+                        onSubmitEditing={textProps.returnKeyType === 'done' ? Keyboard.dismiss : () => {}}
                         {...textProps as TextInputProps}/>
                     {validLabel}
                 </View>
