@@ -16,10 +16,14 @@ export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArr
     
     const history = useHistory()
 
-    const backArrowPressed = onBackArrowPressed || (() => {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)        
+    const backArrowPressed = () => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+        if (onBackArrowPressed) {
+            onBackArrowPressed()
+            return
+        }
         history.goBack()
-    })
+    }
 
     return (
         <View style={[styles.kheader, style]}>
