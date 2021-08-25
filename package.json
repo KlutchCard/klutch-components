@@ -1,10 +1,6 @@
 {
   "name": "@alloycard/klutch-components",
-<<<<<<< HEAD
-  "version": "0.1.68-a",
-=======
   "version": "0.1.76",
->>>>>>> fd9bb6dd11c94b72ba03212d29c314a50070de77
   "description": "Klutch Components for MiniApps",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
