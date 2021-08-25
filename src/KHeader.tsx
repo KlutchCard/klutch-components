@@ -16,20 +16,23 @@ export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArr
     
     const history = useHistory()
 
-    const backArrowPressed = () => {        
-        onBackArrowPressed && onBackArrowPressed()
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)        
+    const backArrowPressed = () => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+        if (onBackArrowPressed) {
+            onBackArrowPressed()
+            return
+        }
         history.goBack()
     }
 
     return (
         <View style={[styles.kheader, style]}>
             {showBackArrow ? (
-                <Pressable style={styles.arrow} onPress={backArrowPressed} hitSlop={30}> 
+                <Pressable style={styles.arrow} onPress={backArrowPressed} hitSlop={50}> 
                     <BackArrow />
                 </Pressable>
             ): null}
-            <KText style={[styles.kheaderText, textStyle]} {...props} />    
+            <KText style={[showBackArrow &&  {marginLeft: -16}, styles.kheaderText, textStyle]} {...props} />    
         </View>
     )
 }
@@ -57,9 +60,12 @@ const styles = StyleSheet.create({
         textTransform: "uppercase",
         fontFamily: KlutchTheme.header.fontFamily,
         fontSize: KlutchTheme.header.size,   
-        letterSpacing: 0.7     
+        letterSpacing: 0.7,
+        textAlign: "center",
+        flex: 1,            
     },
-    arrow: {
-        marginRight: 20        
+    arrow: {                
+        flexBasis: 16,
+        zIndex: 1        
     }
 })
