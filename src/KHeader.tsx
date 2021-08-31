@@ -10,9 +10,11 @@ export interface KHeaderProps extends KTextProps {
     showBackArrow? : boolean
     onBackArrowPressed?: () => void
     textStyle?: StyleProp<TextStyle>
+    size?: "small" | "large"
+    align?: "left" | "center" 
 }
 
-export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArrowPressed, textStyle, ...props}: KHeaderProps) => {
+export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArrowPressed, textStyle, align, size, ...props}: KHeaderProps) => {
     
     const history = useHistory()
 
@@ -32,7 +34,11 @@ export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArr
                     <BackArrow />
                 </Pressable>
             ): null}
-            <KText style={[showBackArrow &&  {marginLeft: -16}, styles.kheaderText, textStyle]} {...props} />    
+            <KText style={[showBackArrow &&  {marginLeft: -16},   
+                    {textAlign: align || "center"},
+                    {fontSize: size == "large" ? KlutchTheme.header.size : 20},
+                    styles.kheaderText, 
+                    textStyle]} {...props} />    
         </View>
     )
 }
@@ -59,9 +65,8 @@ const styles = StyleSheet.create({
     kheaderText: {
         textTransform: "uppercase",
         fontFamily: KlutchTheme.header.fontFamily,
-        fontSize: KlutchTheme.header.size,   
         letterSpacing: 0.7,
-        textAlign: "center",
+
         flex: 1,            
     },
     arrow: {                
