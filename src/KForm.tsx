@@ -18,7 +18,9 @@ export class KForm extends React.Component<KFormProps> {
         
     validate = () => {
         var isValid = true
-        for (let ref of this.myRefs) {
+    
+        for (let ref of this.myRefs) {            
+            if (!ref)  continue;
             const result = ref.validateComponent()
             switch (result.valid) {
                 case ValidationState.ERROR: return result.valid                

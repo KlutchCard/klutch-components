@@ -26,18 +26,19 @@ export default KMiniAppPanel
 
 const style = StyleSheet.create({
     kTransactionPanel: {
-        marginVertical: 10,
+        marginTop: 10,
         height: 100,
         width: "100%",
         backgroundColor: "white",
-        paddingVertical: 5,
-        paddingHorizontal: 10       
+        paddingVertical: 20,
+        paddingHorizontal: 16       
     },
     homePanel: {
-        height: 200
+        height: 225
     },
     recipeName: {
         textTransform: "uppercase",
-        color: KlutchTheme.colors.secondary
+        color: KlutchTheme.colors.secondary,
+        marginBottom: 10
     }
 })

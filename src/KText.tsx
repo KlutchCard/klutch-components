@@ -42,7 +42,7 @@ export const KText: React.FC<KTextProps> = ({style,  format, children, fontWeigh
                 normalizedChildren = (  
                     <>
                     {dollars}
-                    <KText style={{fontSize: 10}}>.{cents}</KText>
+                    <KText style={[styles.ktext, extraStyle, style, fontWeightStyle, {fontSize: 10}]}>.{cents}</KText>
                     </>
                 )                    
                 break;
