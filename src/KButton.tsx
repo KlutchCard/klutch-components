@@ -10,7 +10,7 @@ export interface KButtonProps  {
     style?: StyleProp<ViewStyle>
     label: string
     disabled?: boolean
-    type?: "primary" | "cancel"  | "outline" | "delete"
+    type?: "primary" | "cancel"  | "outline" | "outline-small" | "delete"
     onPress?: () => void
     loading?: boolean
     link?: string
@@ -58,6 +58,12 @@ export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, o
         case "outline": {
             extraStyle = {backgroundColor: "transparent", borderWidth: 1, borderColor: bg}
             extraLabelStyle = {color: bg}
+            break
+        }
+        case "outline-small": {
+            extraStyle = {backgroundColor: "transparent", borderWidth: 1, borderColor: KlutchTheme.colors.primary}
+            extraLabelStyle = {color: KlutchTheme.colors.primary}
+            textStyle = {fontSize: 11, letterSpacing: 0.3, fontFamily: KlutchTheme.font.semiBoldFontFamily}
             break
         }
         case "delete": {

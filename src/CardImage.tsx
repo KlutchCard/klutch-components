@@ -2,6 +2,7 @@ import { Card, CardColor, CardMedia } from "@alloycard/alloy-js"
 import React from "react"
 import { StyleSheet, View, ViewProps, Image, ActivityIndicator, Platform } from "react-native"
 import KLoadingIndicator from "./KLoadingIndicator"
+import KlutchTheme from "./KlutchTheme"
 import KText from "./KText"
 import Logo from "./Logo"
 
@@ -100,14 +101,19 @@ const style = StyleSheet.create({
     paddingLeft: 20,
   },
   sensitiveDataText: {
-    lineHeight: 18,
-    fontFamily: Platform.OS === "ios" ? "Menlo":   "monospace"
+    lineHeight: 20,
+    fontFamily: Platform.OS === "ios" ? "Menlo_600SemiBold":   "Monospace_600SemiBold",
+    fontSize: 15,
+    letterSpacing: 0.3
   },
   cardName: {
     position: "absolute",
     bottom: 60,
     right: 20,
-    textTransform: "uppercase"
+    textTransform: "uppercase",
+    fontSize: KlutchTheme.font.size,
+    fontFamily: KlutchTheme.font.semiBoldFontFamily,
+    letterSpacing: 0.3
   },
   logo: {
     position: "absolute",
