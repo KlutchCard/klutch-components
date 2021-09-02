@@ -12,9 +12,10 @@ export interface KHeaderProps extends KTextProps {
     textStyle?: StyleProp<TextStyle>
     size?: "small" | "large"
     align?: "left" | "center" 
+    color?: string
 }
 
-export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArrowPressed, textStyle, align, size, ...props}: KHeaderProps) => {
+export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArrowPressed, textStyle, align, size, color, ...props}: KHeaderProps) => {
     
     const history = useHistory()
 
@@ -31,12 +32,13 @@ export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArr
         <View style={[styles.kheader, style]}>
             {showBackArrow ? (
                 <Pressable style={styles.arrow} onPress={backArrowPressed} hitSlop={50}> 
-                    <BackArrow />
+                    <BackArrow color={color} />
                 </Pressable>
             ): null}
             <KText style={[showBackArrow &&  {marginLeft: -16},   
                     {textAlign: align || "center"},
                     {fontSize: size == "large" ? KlutchTheme.header.size : 20},
+                    {color: color || KlutchTheme.header.color},
                     styles.kheaderText, 
                     textStyle]} {...props} />    
         </View>
@@ -50,7 +52,7 @@ const BackArrow = (props: SvgProps) => (
       fill="none"      
       {...props}
     >
-      <Path d="M16 8H2M9 15L2 8l7-7" stroke="#191919" strokeWidth={2} />
+      <Path d="M16 8H2M9 15L2 8l7-7" stroke={props.color || "#191919"} strokeWidth={2} />
     </Svg>
     )
 

@@ -4,12 +4,12 @@ import KScreen from "./KScreen"
 import KScrollView from "./KScrollView"
 
 
-export const KScrollScreen = React.forwardRef<ScrollView, PropsWithChildren<ScrollViewProps>>((props: PropsWithChildren<ScrollViewProps>, ref) => {
+export const KScrollScreen = React.forwardRef<ScrollView, PropsWithChildren<ScrollViewProps>>(({style, ...props}: PropsWithChildren<ScrollViewProps>, ref) => {
 
 
 
     return (
-        <KScreen>
+        <KScreen style={style}>
             <KScrollView ref={ref as any} {...props} />
         </KScreen>
     )
