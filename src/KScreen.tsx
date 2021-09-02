@@ -1,11 +1,15 @@
-import React, { PropsWithChildren } from "react"
+import React, { PropsWithChildren, useState } from "react"
 import { View, ViewProps, StyleSheet  } from "react-native";
 import KlutchTheme from "./KlutchTheme";
 
 interface KScreenProps extends ViewProps {
 }
 
+
 export const KScreen : React.FunctionComponent<KScreenProps> = ({style, ...props}: PropsWithChildren<KScreenProps>) => {
+
+
+
     return(
         <View style={[styles.kview, style]} {...props} />
     )
