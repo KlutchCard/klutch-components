@@ -102,7 +102,8 @@ const style = StyleSheet.create({
   },
   sensitiveDataText: {
     lineHeight: 20,
-    fontFamily: Platform.OS === "ios" ? "Menlo_600SemiBold":   "Monospace_600SemiBold",
+    fontFamily: Platform.OS === "ios" ? "Menlo":   "monospace",
+    fontWeight: "bold",
     fontSize: 15,
     letterSpacing: 0.3
   },
