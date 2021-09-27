@@ -30,7 +30,7 @@ const style = StyleSheet.create({
         height: 100,
         width: "100%",
         backgroundColor: "white",
-        paddingVertical: 20,
+        paddingVertical: 5,
         paddingHorizontal: 16       
     },
     homePanel: {
@@ -39,6 +39,5 @@ const style = StyleSheet.create({
     recipeName: {
         textTransform: "uppercase",
         color: KlutchTheme.colors.secondary,
-        marginBottom: 10
     }
 })
