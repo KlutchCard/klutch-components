@@ -1,5 +1,5 @@
 {
-  "name": "@alloycard/klutch-components",
+  "name": "@klutchcard/klutch-components",
   "version": "0.1.82",
   "description": "Klutch Components for MiniApps",
   "main": "lib/commonjs/index",
@@ -38,7 +38,7 @@
     "ios",
     "android"
   ],
-  "repository": "git://github.com/AlloyCard/klutch-components.git",
+  "repository": "git://github.com/KlutchCard/klutch-components.git",
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
@@ -64,7 +64,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@alloycard/alloy-js": "^1.4.15",
+    "@klutchcard/alloy-js": "^1.4.15",
     "@expo-google-fonts/inter": "^0.1.0",
     "@react-native-community/hooks": "^2.6.0",
     "expo": "^42.0.0",
