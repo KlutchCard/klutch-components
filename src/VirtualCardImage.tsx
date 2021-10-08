@@ -1,4 +1,4 @@
-import type { Card, CardLockState } from "@alloycard/alloy-js"
+import type { Card, CardLockState } from "@klutchcard/alloy-js"
 import React from "react"
 import { StyleSheet, View, ViewProps, Image } from "react-native"
 import KText from "./KText"

@@ -1,4 +1,4 @@
-import { Card, CardColor, CardMedia } from "@alloycard/alloy-js"
+import { Card, CardColor, CardMedia } from "@klutchcard/alloy-js"
 import React from "react"
 import { StyleSheet, View, ViewProps, Image, ActivityIndicator, Platform } from "react-native"
 import KLoadingIndicator from "./KLoadingIndicator"
