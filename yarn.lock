@@ -1759,7 +1759,7 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@klutchcard/alloy-js@^1.4.15":
+"@klutchcard/alloy-js@1.4.31":
   version "1.4.31"
   resolved "https://npm.pkg.github.com/download/@klutchcard/alloy-js/1.4.31/becdb367565cc6a00138b6611e1d123d53274aa6be0e636540099bb7696ee02d#3422bf1256109d6263e5245a81243d084a382ce5"
   integrity sha512-i6dN0nAiCmSsyJfchW8KjwWqT1kjoZYu1NXnngeU6ypjfD+8qyrZNAouz53i6YE6I6t3hkRpxIVpdP7I9pxPkQ==
