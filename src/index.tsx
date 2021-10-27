@@ -31,3 +31,5 @@ export * from './KLoadingIndicator'
 export * from './KView'
 export * from './KImage'
 export * from './KPressable'
+import * as Svg from  'react-native-svg'
+export {Svg}
