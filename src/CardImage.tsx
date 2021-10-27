@@ -1,6 +1,6 @@
 import { Card, CardColor, CardMedia } from "@klutchcard/alloy-js"
 import React from "react"
-import { StyleSheet, View, ViewProps, Image, ActivityIndicator, Platform } from "react-native"
+import { StyleSheet, View, ViewProps, Image, Platform, TouchableOpacity, Clipboard } from "react-native"
 import KLoadingIndicator from "./KLoadingIndicator"
 import KlutchTheme from "./KlutchTheme"
 import KText from "./KText"
@@ -34,9 +34,17 @@ export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveDa
             )}      
             {(showSensitiveData  && cardNumber && cvv) ?
                 <View style={[style.sensitiveData, { height: 210, justifyContent: "space-between" }]}>
+                  <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <KText style={[style.sensitiveDataText, { color: wordColor }]}>
                         {`${cardNumber.substring(0, 4)}\n${cardNumber.substring(4, 8)}\n${cardNumber.substring(8, 12)}\n${cardNumber.substring(12, 16)}`}
                     </KText>
+                    <TouchableOpacity
+                        style={{ margin: 15, padding: 10, borderRadius: 40 }}
+                        onPress={() => Clipboard.setString(cardNumber)}
+                    >
+                        <Image source={require('../assets/copy.png')} />
+                    </TouchableOpacity>
+                  </View>
                     <View>
                         <KText style={[style.sensitiveDataText, { color: wordColor }]}>
                             {`CVV ${cvv}\nEXP ${card.expirationDate}`}
