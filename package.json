@@ -1,6 +1,6 @@
 {
   "name": "@klutchcard/klutch-components",
-  "version": "0.1.88",
+  "version": "0.1.89-a",
   "description": "Klutch Components for MiniApps",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.1.0",
-    "@klutchcard/alloy-js": "1.4.31",
+    "@klutchcard/alloy-js": "1.4.41",
     "@react-native-community/hooks": "^2.6.0",
     "expo": "^42.0.0",
     "expo-haptics": "~10.1.0",
