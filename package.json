@@ -1,6 +1,6 @@
 {
   "name": "@klutchcard/klutch-components",
-  "version": "0.1.89",
+  "version": "0.2.0-a",
   "description": "Klutch Components for MiniApps",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
