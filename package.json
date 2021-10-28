@@ -1,6 +1,6 @@
 {
   "name": "@klutchcard/klutch-components",
-  "version": "0.1.86",
+  "version": "0.1.87",
   "description": "Klutch Components for MiniApps",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -69,6 +69,7 @@
     "@react-native-community/hooks": "^2.6.0",
     "expo": "^42.0.0",
     "expo-haptics": "~10.1.0",
+    "expo-linear-gradient": "^10.0.3",
     "luxon": "^1.26.0",
     "react-native-currency-input": "^1.0.1",
     "react-native-svg": "12.1.1",
