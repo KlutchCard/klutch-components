@@ -32,4 +32,6 @@ export * from './KView'
 export * from './KImage'
 export * from './KPressable'
 import * as Svg from  'react-native-svg'
+import * as LinearGradient from "expo-linear-gradient"
 export {Svg}
+export { LinearGradient }
