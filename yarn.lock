@@ -1759,10 +1759,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@klutchcard/alloy-js@1.4.31":
-  version "1.4.31"
-  resolved "https://npm.pkg.github.com/download/@klutchcard/alloy-js/1.4.31/becdb367565cc6a00138b6611e1d123d53274aa6be0e636540099bb7696ee02d#3422bf1256109d6263e5245a81243d084a382ce5"
-  integrity sha512-i6dN0nAiCmSsyJfchW8KjwWqT1kjoZYu1NXnngeU6ypjfD+8qyrZNAouz53i6YE6I6t3hkRpxIVpdP7I9pxPkQ==
+"@klutchcard/alloy-js@1.4.41":
+  version "1.4.41"
+  resolved "https://npm.pkg.github.com/download/@klutchcard/alloy-js/1.4.41/193b8c77401d8dc5b8d1a3a398cc74a0ee9e87ea6012e97d394d3653e9431233#7c4e52ee6f4a468ec18a7bfcd0cdb35eeaf9eb86"
+  integrity sha512-cCkS1W2rec9HmvQ5tob5o6cOEPC0k+oA83CZOnIRBg39nnT1jCT3v+Ey6gNUoa/Qs7FSJui7BhvoznUDrj524g==
   dependencies:
     "@apollo/client" "^3.3.19"
     axios "^0.21.1"
@@ -4827,12 +4827,10 @@ expo-keep-awake@~9.2.0:
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-9.2.0.tgz#9cbdcc8264c943ef29a58326236cd34267e98f43"
   integrity sha512-R5jAx5j3MqrhKFB307FBpaHtYSYeVIFX/rVforBF5inKonYjXRWVhjGoBjolF4geAryNamC3NKhMfxyaaB0W6Q==
 
-expo-linear-gradient@^10.0.3:
-  version "10.0.3"
-  resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-10.0.3.tgz#06ad72e164f5bf36c4afcfc8ccd31138a3a78d6e"
-  integrity sha512-zKkBhHvTvDywpb0y5BJDHTbxX5/2C60qW/M8uyZXKIZcTUwY7j/9Kcx0YzoNNglq7p6aQ/DWO7sM8LHr93985Q==
-  dependencies:
-    expo-modules-core "~0.4.4"
+expo-linear-gradient@~9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-9.2.0.tgz#5ae16fcb8f141b1c51dc36bd4493dfd6566a9511"
+  integrity sha512-LnW2u9OT6GeyC6T8qEGjFYfNSk4KIBAwU0aRSjM4Y8hckWqhtKngGDz46DqGmJBzvZMSKuZZvj5xKn794r54ag==
 
 expo-modules-autolinking@^0.0.3:
   version "0.0.3"
@@ -4849,14 +4847,6 @@ expo-modules-core@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/expo-modules-core/-/expo-modules-core-0.2.0.tgz#68e5b6e53d0afbf8d131578831aed657589a2d42"
   integrity sha512-inpfZ5X/BaTtbj2wG9PA9AC0MN8VyId6KSRlVuEg7+ziurHBy/kKDFxpOddUokhwiln2uhoYPSStJjR/tKypdw==
-
-expo-modules-core@~0.4.4:
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/expo-modules-core/-/expo-modules-core-0.4.6.tgz#b4b251043c98ecf36f7353c247e8e0d83796aa77"
-  integrity sha512-ns9kQn1titPlDsmuKNfyxUui1Nf338d+oIHb/N8jlneKukFwgQxxc5CwyKHrNKNxcUVzumpStSi4sHquKBmOiA==
-  dependencies:
-    compare-versions "^3.4.0"
-    invariant "^2.2.4"
 
 expo@^42.0.0:
   version "42.0.3"
