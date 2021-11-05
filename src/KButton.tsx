@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Pressable, StyleProp, ViewStyle, StyleSheet, ActivityIndicator, TextStyle } from "react-native"
+import { Pressable, StyleProp, ViewStyle, StyleSheet, TextStyle } from "react-native"
 import { useHistory } from "react-router-native"
 import KlutchTheme from "./KlutchTheme"
 import KText from "./KText"
@@ -15,9 +15,10 @@ export interface KButtonProps  {
     loading?: boolean
     link?: string
     textStyle?: StyleProp<TextStyle>
+    vibrationFeedback?: boolean
 }
 
-export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, onPress, loading, link, textStyle, ...props}: KButtonProps) => {
+export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, onPress, loading, link, textStyle, vibrationFeedback = false, ...props}: KButtonProps) => {
 
     const [pressed, setPressed] = useState(false)
 
@@ -75,7 +76,7 @@ export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, o
 
     const onPressIn = () => {
         setPressed(true)
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+        if (vibrationFeedback === true) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
     }
 
     return (
@@ -85,6 +86,7 @@ export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, o
             onPressOut={() => setPressed(false)}
             onPressIn={() => onPressIn()}
             onPress={onButtonPress}
+            {...props}
         >
             {loading ?
                 (<KLoadingIndicator color={extraLabelStyle?.color}  size="small" />) :

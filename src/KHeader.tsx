@@ -13,18 +13,19 @@ export interface KHeaderProps extends KTextProps {
     size?: "small" | "large"
     align?: "left" | "center" 
     color?: string
+    vibrationFeedback?: boolean
 }
 
-export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArrowPressed, textStyle, align, size, color, ...props}: KHeaderProps) => {
+export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArrowPressed, textStyle, align, size, color, vibrationFeedback = false, ...props}: KHeaderProps) => {
     
     const history = useHistory()
 
     const backArrowPressed = () => {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
         if (onBackArrowPressed) {
             onBackArrowPressed()
             return
         }
+        if (vibrationFeedback === true) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
         history.goBack()
     }
 

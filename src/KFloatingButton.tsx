@@ -6,14 +6,15 @@ import Svg, { Path } from "react-native-svg"
 
 export interface KFloatingButtonProps extends ViewProps {
     onPress: () => void
+    vibrationFeedback?: boolean
 }
 
-export const KFloatingButton: React.FC<KFloatingButtonProps> = ({onPress, ...props} : KFloatingButtonProps) => {
+export const KFloatingButton: React.FC<KFloatingButtonProps> = ({onPress, vibrationFeedback = false, ...props} : KFloatingButtonProps) => {
     const dimensions = useWindowDimensions()
     const left = (dimensions.width / 2) - 25
 
     var onButtonPress = (() => {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+        if (vibrationFeedback === true) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
         onPress && onPress()
     })
 
