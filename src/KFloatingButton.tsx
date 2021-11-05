@@ -9,7 +9,7 @@ export interface KFloatingButtonProps extends ViewProps {
     vibrationFeedback?: boolean
 }
 
-export const KFloatingButton: React.FC<KFloatingButtonProps> = ({onPress, vibrationFeedback, ...props} : KFloatingButtonProps) => {
+export const KFloatingButton: React.FC<KFloatingButtonProps> = ({onPress, vibrationFeedback = false, ...props} : KFloatingButtonProps) => {
     const dimensions = useWindowDimensions()
     const left = (dimensions.width / 2) - 25
 

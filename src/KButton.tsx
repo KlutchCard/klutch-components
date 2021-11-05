@@ -18,7 +18,7 @@ export interface KButtonProps  {
     vibrationFeedback?: boolean
 }
 
-export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, onPress, loading, link, textStyle, vibrationFeedback, ...props}: KButtonProps) => {
+export const KButton: React.FC<KButtonProps> = ({label, style, disabled, type, onPress, loading, link, textStyle, vibrationFeedback = false, ...props}: KButtonProps) => {
 
     const [pressed, setPressed] = useState(false)
 

@@ -9,7 +9,7 @@ export interface KLinkProps  extends PressableProps {
     vibrationFeedback?: boolean
 }
 
-export const KLink: React.FC<KLinkProps> = ({to, children, vibrationFeedback, ...props}: PropsWithChildren<KLinkProps>) => {
+export const KLink: React.FC<KLinkProps> = ({to, children, vibrationFeedback = false, ...props}: PropsWithChildren<KLinkProps>) => {
     var history = useHistory()
 
     const onPress = () => {        

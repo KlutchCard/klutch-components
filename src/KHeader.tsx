@@ -16,7 +16,7 @@ export interface KHeaderProps extends KTextProps {
     vibrationFeedback?: boolean
 }
 
-export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArrowPressed, textStyle, align, size, color, vibrationFeedback, ...props}: KHeaderProps) => {
+export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArrowPressed, textStyle, align, size, color, vibrationFeedback = false, ...props}: KHeaderProps) => {
     
     const history = useHistory()
 
