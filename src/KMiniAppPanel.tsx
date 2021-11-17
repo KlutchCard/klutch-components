@@ -30,7 +30,7 @@ const style = StyleSheet.create({
         height: 100,
         width: "100%",
         backgroundColor: "white",
-        paddingVertical: 5,
+        paddingTop: 20,
         paddingHorizontal: 16       
     },
     homePanel: {
