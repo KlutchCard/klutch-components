@@ -33,3 +33,5 @@ export const KScrollView = React.forwardRef<ScrollView, PropsWithChildren<Scroll
 });
 
 export default KScrollView
+
+export {ScrollView}
