@@ -1,22 +1,24 @@
 import { useKeyboard } from "@react-native-community/hooks";
 import React, { PropsWithChildren, useContext } from "react"
-import { Platform, ScrollView, ScrollViewProps, useWindowDimensions, View } from "react-native"
+import { Platform, ScrollView, ScrollViewProps, StyleProp, useWindowDimensions, View, ViewStyle } from "react-native"
 import KlutchTheme from "./KlutchTheme";
 import { KModalContext } from "./KModal";
 
+export interface KScrollViewProps extends PropsWithChildren<ScrollViewProps> {
+    scrollContentStyle?: StyleProp<ViewStyle>
+}
 
-
-export const KScrollView = React.forwardRef<ScrollView, PropsWithChildren<ScrollViewProps>>(({children, ...props}: PropsWithChildren<ScrollViewProps>, ref) =>  {
+export const KScrollView = React.forwardRef<ScrollView, PropsWithChildren<ScrollViewProps>>(({children, scrollContentStyle, ...props}: KScrollViewProps, ref) =>  {
     const height = useWindowDimensions().height -  KlutchTheme.scrollWindowMargin
     
     const keyboard = useKeyboard()
 
     const isModal = useContext(KModalContext)
     
-    const scrollViewStyle = {
+    const scrollViewStyle = [{
             minHeight: (Platform.OS === "ios" && keyboard.keyboardShown) ? height + keyboard.keyboardHeight + 30 : height,   
             flexGrow: 1,             
-        }
+        }, scrollContentStyle]
     return (
         <ScrollView ref={ref as any} 
             contentContainerStyle={scrollViewStyle} 
