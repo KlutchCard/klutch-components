@@ -76,6 +76,7 @@ const style = StyleSheet.create({
     height: 50,
     width: 50,
     right: 0,
+    marginRight: 40,
   },
   buttonTitle: {
     position: 'absolute',
