@@ -73,9 +73,8 @@ export default KPasswordInput
 const style = StyleSheet.create({
   button: {
     position: 'absolute',
-    height: 50,
-    width: 50,
-    right: 0,
+    right: 80,
+    marginTop: 40,
   },
   buttonTitle: {
     position: 'absolute',
