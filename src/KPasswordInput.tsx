@@ -38,7 +38,7 @@ export const KPasswordInput: React.FC<KPasswordInputProps> = React.forwardRef(({
             onChangeText={text => passwordChangeText(text)}
             {...props}
           />
-          <Pressable onPress={() => setHidePass(!hidePass)} style={style.button} >
+          <Pressable onPress={() => setHidePass(!hidePass)} style={style.showButton} >
             <KText style={style.buttonTitle}>Show</KText>
           </Pressable>
         </View>
@@ -71,16 +71,12 @@ export const KPasswordInput: React.FC<KPasswordInputProps> = React.forwardRef(({
 export default KPasswordInput
 
 const style = StyleSheet.create({
-  button: {
+  showButton: {
     position: 'absolute',
-    right: 80,
-    marginTop: 40,
+    right: 5,
+    bottom: 35    
   },
-  buttonTitle: {
-    position: 'absolute',
-    bottom: 5
-    },
-    passwordHint: {
+  passwordHint: {
         color: KlutchTheme.form.label.color,
         marginLeft: 10,
         fontSize: KlutchTheme.font.smallSize
