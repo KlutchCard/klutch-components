@@ -2452,15 +2452,9 @@
     chalk "^4.0.0"
 
 "@klutchcard/alloy-js@^1.4.56-beta":
-<<<<<<< Updated upstream
   version "1.4.57"
   resolved "https://npm.pkg.github.com/download/@klutchcard/alloy-js/1.4.57/7f04c0ae76441dc4ee666dff7fb74df3b0fb5200e88bfec60b0776fae760dfc7#75d26061d1db30fb92cf693aed7e5454672b7209"
   integrity sha512-gi6nisxpb/9bjgclwdhxx67BPyqgAbwh10R2KvJZ0T4qEhaZnOcdXe0gLnGQirR1mmIXDUEuwsmveNIzeIE5uQ==
-=======
-  version "1.4.59"
-  resolved "https://npm.pkg.github.com/download/@klutchcard/alloy-js/1.4.59/9ecd7b4fe10689a39ad3e752067de46711f9bf06f9b44fb1e63957c0fb0fbae6#18f8263846b37b10280be812fa491704494b1f00"
-  integrity sha512-ga0DQtH46gfp6PNWyFl1usrNDzOuxACZ3KRTRyzW6aiNsupWUTVj+JS88m1U5c8Dc92xGE/xFCyo5rWjeTclGQ==
->>>>>>> Stashed changes
   dependencies:
     "@apollo/client" "^3.5.8"
     axios "^0.21.1"
