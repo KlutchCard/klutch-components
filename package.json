@@ -1,6 +1,6 @@
 {
   "name": "@klutch-card/klutch-components",
-  "version": "0.3.3",
+  "version": "0.3.4-d",
   "description": "Klutch Components for MiniApps",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -39,7 +39,10 @@
     "ios",
     "android"
   ],
-  "repository": "git://github.com/KlutchCard/klutch-components.git",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/KlutchCard/klutch-components.git"
+  },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
@@ -154,5 +157,9 @@
     "url": "https://github.com/KlutchCard/klutch-components/issues"
   },
   "homepage": "https://github.com/KlutchCard/klutch-components#readme",
-  "author": "klutchcard"
+  "author": "klutchcard",
+  "directories": {
+    "lib": "lib"
+  },
+  "license": "ISC"
 }
