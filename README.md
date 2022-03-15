@@ -5,13 +5,13 @@ Klutch Components for MiniApps
 ## Installation
 
 ```sh
-npm install klutch-components
+npm i @klutch-card/klutch-components
 ```
 
 ## Usage
 
 ```js
-import KlutchComponents from "klutch-components";
+import { KlutchComponents } from "@klutch-card/klutch-components"
 
 // ...
 
