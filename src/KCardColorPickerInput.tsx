@@ -1,4 +1,4 @@
-import { CardColor, CardMedia } from "@klutchcard/alloy-js"
+import { CardColor, CardMedia } from "@klutch-card/klutch-js"
 import React, { PropsWithChildren, useState } from "react"
 import { Pressable, View, StyleSheet, ViewProps, ScrollView, StyleProp, TextStyle } from "react-native"
 import KlutchTheme from "./KlutchTheme"

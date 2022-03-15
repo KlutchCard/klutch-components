@@ -1,4 +1,4 @@
-import { Address } from "@klutchcard/alloy-js"
+import { Address } from "@klutch-card/klutch-js"
 import axios from "axios"
 import Constants from 'expo-constants'
 import React, { useState } from "react"

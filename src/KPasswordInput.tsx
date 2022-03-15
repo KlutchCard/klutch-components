@@ -39,7 +39,7 @@ export const KPasswordInput: React.FC<KPasswordInputProps> = React.forwardRef(({
             {...props}
           />
           <Pressable onPress={() => setHidePass(!hidePass)} style={style.showButton} >
-            <KText style={style.buttonTitle}>Show</KText>
+            <KText style={style.showButton}>Show</KText>
           </Pressable>
         </View>
         {hideCheckMark ||
