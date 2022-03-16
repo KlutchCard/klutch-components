@@ -1,6 +1,6 @@
 {
-  "name": "@klutchcard/klutch-components",
-  "version": "0.3.3",
+  "name": "@klutch-card/klutch-components",
+  "version": "0.3.4",
   "description": "Klutch Components for MiniApps",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -31,14 +31,18 @@
     "release": "release-it",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods",
-    "build": "tsc"
+    "build": "tsc",
+    "prepublish": "tsc"
   },
   "keywords": [
     "react-native",
     "ios",
     "android"
   ],
-  "repository": "git://github.com/KlutchCard/klutch-components.git",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/KlutchCard/klutch-components.git"
+  },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
@@ -65,7 +69,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.1.0",
-    "@klutchcard/alloy-js": "^1.4.56-beta",
+    "@klutch-card/klutch-js": "^1.5.7",
     "@react-native-community/hooks": "^2.6.0",
     "expo": "^44.0.0",
     "expo-haptics": "~11.1.0",
@@ -145,5 +149,17 @@
       "module",
       "typescript"
     ]
-  }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "bugs": {
+    "url": "https://github.com/KlutchCard/klutch-components/issues"
+  },
+  "homepage": "https://github.com/KlutchCard/klutch-components#readme",
+  "author": "klutchcard",
+  "directories": {
+    "lib": "lib"
+  },
+  "license": "ISC"
 }
