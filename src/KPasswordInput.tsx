@@ -39,7 +39,7 @@ export const KPasswordInput: React.FC<KPasswordInputProps> = React.forwardRef(({
             {...props}
           />
           <Pressable onPress={() => setHidePass(!hidePass)} style={style.showButton} >
-            <KText style={style.showButton}>Show</KText>
+            <KText>Show</KText>
           </Pressable>
         </View>
         {hideCheckMark ||
@@ -73,8 +73,11 @@ export default KPasswordInput
 const style = StyleSheet.create({
   showButton: {
     position: 'absolute',
-    right: 5,
-    bottom: 35    
+
+    alignSelf: "flex-end",
+    paddingRight: "15%",
+
+    bottom: "50%"
   },
   passwordHint: {
         color: KlutchTheme.form.label.color,
