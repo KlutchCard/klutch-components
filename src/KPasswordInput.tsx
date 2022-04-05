@@ -35,6 +35,7 @@ export const KPasswordInput: React.FC<KPasswordInputProps> = React.forwardRef(({
             secureTextEntry={hidePass}
             value={currValue}
             ref={ref as any}
+            showValid={false}
             onChangeText={text => passwordChangeText(text)}
             {...props}
           />
@@ -73,10 +74,7 @@ export default KPasswordInput
 const style = StyleSheet.create({
   showButton: {
     position: 'absolute',
-
     alignSelf: "flex-end",
-    paddingRight: "15%",
-
     bottom: "50%"
   },
   passwordHint: {
