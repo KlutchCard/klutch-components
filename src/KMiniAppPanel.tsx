@@ -30,13 +30,13 @@ const style = StyleSheet.create({
         height: 100,
         width: "100%",
         backgroundColor: "white",
-        paddingTop: 20,
         paddingHorizontal: 16       
     },
     homePanel: {
         height: 225
     },
     recipeName: {
+        marginVertical: 12,
         textTransform: "uppercase",
         color: KlutchTheme.colors.secondary,
     }
