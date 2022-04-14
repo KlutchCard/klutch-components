@@ -36,7 +36,8 @@ const style = StyleSheet.create({
         height: 225
     },
     recipeName: {
-        marginVertical: 12,
+        marginTop: 10,
+        marginBottom: 8,
         textTransform: "uppercase",
         color: KlutchTheme.colors.secondary,
     }
