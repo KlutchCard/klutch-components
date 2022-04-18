@@ -56,11 +56,14 @@ export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveDa
                     {[1, 2, 3].map((n) => (
                         <View key={`hidden-numbers-bar-${n}`} style={{
                             height: 7,
+                            width: 38,
                             backgroundColor: "black",
                             marginVertical: 3,
                         }} />
                     ))}
-                    <KText style={[style.sensitiveDataText, { color: wordColor }]}>{card.lastFour}</KText>
+                    <KText style={[style.sensitiveDataText, { color: wordColor }]}>
+                        {card.lastFour || cardNumber.substring(cardNumber.length - 4)}
+                    </KText>
                 </View>
             }
         <Logo style={style.logo} color={wordColor} />
