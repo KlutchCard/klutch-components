@@ -15,7 +15,7 @@ export const KMiniAppPanel: React.FC<KTransactionPanelProps> = ({recipeName, chi
     return (
         <View style={[style.kTransactionPanel, (panelStyle == "home" && style.homePanel)]}>
             <KText style={style.recipeName} fontWeight="semibold">{recipeName}</KText>
-            <View style={{flex: 1}}>                
+            <View style={style.templateContainer}>
                 {children}
             </View>
         </View>
@@ -30,14 +30,18 @@ const style = StyleSheet.create({
         height: 100,
         width: "100%",
         backgroundColor: "white",
-        paddingTop: 20,
         paddingHorizontal: 16       
     },
     homePanel: {
+        paddingVertical: 20,
         height: 225
     },
     recipeName: {
         textTransform: "uppercase",
-        color: KlutchTheme.colors.secondary,
-    }
+        color: KlutchTheme.colors.primaryButtonColor
+    },
+    templateContainer: {
+        flex: 1,
+        marginTop: 18,
+    },
 })
