@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
     colorSquare: {
         height: 20,
         width: 40,        
+        borderRadius: 3,
     },
     cardImage: {        
         width: 100,        
