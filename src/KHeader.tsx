@@ -16,7 +16,7 @@ export interface KHeaderProps extends KTextProps {
     vibrationFeedback?: boolean
 }
 
-export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArrowPressed, textStyle, align, size, color, vibrationFeedback = false, ...props}: KHeaderProps) => {
+export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArrowPressed, textStyle, align, size="small", color, vibrationFeedback = false, ...props}: KHeaderProps) => {
     
     const history = useHistory()
 
@@ -38,7 +38,7 @@ export const KHeader: React.FC<KHeaderProps> = ({style, showBackArrow, onBackArr
             ): null}
             <KText style={[showBackArrow &&  {marginLeft: -16},   
                     {textAlign: align || "center"},
-                    {fontSize: size == "large" ? KlutchTheme.header.size : 20},
+                    {fontSize: size === "large" ? KlutchTheme.header.size : KlutchTheme.header.smallSize},
                     {color: color || KlutchTheme.header.color},
                     styles.kheaderText, 
                     textStyle]} {...props} />    
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     kheader: {
         flexDirection: "row",
         alignItems: "center",
-        marginBottom: 20
+        marginBottom: 38
     },
     kheaderText: {
         textTransform: "uppercase",
