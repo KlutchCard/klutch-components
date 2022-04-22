@@ -7,19 +7,21 @@ import Logo from "./Logo"
 
 export interface VirtualCardImageProps extends ViewProps {
   card: Card
+  hideLogo?: Boolean
+  hideNumbers?: Boolean
 }
 
-export const VirtualCardImage: React.FC<VirtualCardImageProps> = ({card, ...props}: VirtualCardImageProps) => (
+export const VirtualCardImage: React.FC<VirtualCardImageProps> = ({card, hideLogo = false, hideNumbers = false, ...props}: VirtualCardImageProps) => (
   <View style={style.cardView} {...props}>
     <Image style={style.cardImage} source={GetCardImageSource(card)} />
-    <Logo style={style.logo} color={"black"} />
-    <View style={style.cardContent}>
+    {!hideLogo && <Logo style={style.logo} color={"black"} />}
+    {!hideNumbers && <View style={style.cardContent}>
         <KText style={{ textTransform: "uppercase", marginVertical: 3 }} numberOfLines={2}>{card.name}</KText>
         {[1, 2, 3].map((n) => (
             <View key={`hidden-numbers-bar-${n}`} style={style.hiddenBars} />
         ))}
         <KText style={{ fontSize: 12 }}>{card.lastFour}</KText>
-    </View>
+    </View>}
   </View>
 )
 
