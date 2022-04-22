@@ -7,10 +7,9 @@ import Svg, { Path } from "react-native-svg"
 export interface KFloatingButtonProps extends ViewProps {
     onPress: () => void
     vibrationFeedback?: boolean
-    size?: "small" | "medium" | "large"
 }
 
-export const KFloatingButton: React.FC<KFloatingButtonProps> = ({onPress, vibrationFeedback = false, size="medium", ...props} : KFloatingButtonProps) => {
+export const KFloatingButton: React.FC<KFloatingButtonProps> = ({onPress, vibrationFeedback = false, ...props} : KFloatingButtonProps) => {
     const dimensions = useWindowDimensions()
     const left = (dimensions.width / 2) - 25
 
