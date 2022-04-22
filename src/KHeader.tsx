@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     kheader: {
         flexDirection: "row",
         alignItems: "center",
-        marginBottom: 20
+        marginBottom: 38
     },
     kheaderText: {
         textTransform: "uppercase",
