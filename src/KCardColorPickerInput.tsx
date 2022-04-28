@@ -2,8 +2,8 @@ import { CardColor, CardMedia } from "@klutch-card/klutch-js"
 import React, { PropsWithChildren, useState } from "react"
 import { Pressable, View, StyleSheet, ViewProps, ScrollView, StyleProp, TextStyle } from "react-native"
 import KlutchTheme from "./KlutchTheme"
-import CardImage from "./CardImage"
 import KText from "./KText"
+import VirtualCardImage from "./VirtualCardImage"
 
 
 export const ValidColors = Object.keys(CardColor).filter(c => (![CardColor.GRAY, CardColor.BLACK].includes(CardColor[c as keyof typeof CardColor])))
@@ -56,9 +56,9 @@ export const KCardColorPickerInput: React.FC<KCardColorPickerInputProps> = (
                     <ScrollView contentContainerStyle={{justifyContent: "flex-end", minHeight: "100%"}} bounces={false} showsHorizontalScrollIndicator={false}  horizontal>
                         {ValidColors.map(c => (
                                 <Pressable key={`colorOption${c}`} onPress={() => selectionPressed(c)}>
-                                    <CardImage key={c} style={styles.cardImage} card={{                                    
+                                    <VirtualCardImage key={c} style={{ marginRight: 6 }} card={{
                                         color: CardColor[c as keyof typeof CardColor],                                        
-                                    } as any}  />
+                                    } as any} hideLogo hideNumbers />
                                 </Pressable>
                         ))}
                     </ScrollView>
@@ -128,10 +128,8 @@ const styles = StyleSheet.create({
         color: "red"
     },
     colorSquare: {
-        height: 20,
-        width: 40,        
+        height: 18,
+        width: 27,        
+        borderRadius: 3,
     },
-    cardImage: {        
-        width: 100,        
-    }
 })

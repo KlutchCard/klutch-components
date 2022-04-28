@@ -18,7 +18,7 @@ export const KSwitch: React.FC<KSwitchProps> = ({isDisabled, isOff, onPress}: KS
         extraStyle = { backgroundColor: KlutchTheme.form.button.backgroundColor}
     } else {
         extraSquareStyle = { alignSelf: "flex-start", left: 4, }
-        extraStyle = { backgroundColor: KlutchTheme.form.button.disabledBackGroundColor}
+        extraStyle = { backgroundColor: "#B3BABF" }
     }
 
     return (
