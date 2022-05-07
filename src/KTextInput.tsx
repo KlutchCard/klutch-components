@@ -3,7 +3,6 @@ import {  TextInput, TextInputProps, View, StyleSheet, Pressable, StyleProp, Tex
 import KlutchTheme from "./KlutchTheme"
 import KText from "./KText"
 import {validate, Validation, ValidationResult, ValidationState, ValidationType} from "./FormValidation"
-import { Inter_900Black } from "@expo-google-fonts/inter"
 import Svg, { Path } from "react-native-svg"
 import KScrollScreen from "./KScrollScreen"
 

@@ -2451,10 +2451,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@klutch-card/klutch-js@^1.5.7":
-  version "1.5.7"
-  resolved "https://registry.npmjs.org/@klutch-card/klutch-js/-/klutch-js-1.5.7.tgz"
-  integrity sha512-8Zeq3o6HZ6E15py8ck4mSj2ED8BdbmHQfpFNpgCFWj1U1X9cu7A7Gw6SSMeSM81zsn+WchlV+MUO2EAqhYTV8Q==
+"@klutch-card/klutch-js@^1.5.14":
+  version "1.5.14"
+  resolved "https://registry.yarnpkg.com/@klutch-card/klutch-js/-/klutch-js-1.5.14.tgz#a01302249976a8c3a1598281118519b7f75fc51b"
+  integrity sha512-3V/KOLwYOMVfnHwFfF9sNInPOEad59nlxRwUBxGKiuNTGWIYir1YjNNQBqn89h5OqCE2k4Fdzj52oPr5ZWHJmg==
   dependencies:
     "@apollo/client" "^3.5.8"
     axios "^0.21.1"

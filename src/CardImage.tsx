@@ -1,7 +1,6 @@
 import { Card, CardColor, CardMedia } from "@klutch-card/klutch-js"
-import React from "react"
-import { StyleSheet, View, ViewProps, Image, Platform, TouchableOpacity, Clipboard } from "react-native"
-import KLoadingIndicator from "./KLoadingIndicator"
+import React, { useEffect, useRef } from "react"
+import { Animated, StyleSheet, View, ViewProps, Image, Platform, TouchableOpacity, Clipboard, Easing } from "react-native"
 import KlutchTheme from "./KlutchTheme"
 import KText from "./KText"
 import Logo from "./Logo"
@@ -16,22 +15,48 @@ export interface CardImageProps extends ViewProps {
     cvv?: string
   }
   showSensitiveData?: boolean
-  loading?: boolean
+  loading?: boolean,  
 }
 
 export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveData: { cardNumber = "", cvv = "" } = {}, showSensitiveData = false, loading = false,  ...props}: CardImageProps) => {
   if (isLocked === undefined) isLocked = card.lockState == "LOCKED"
   const wordColor: string = (card.color === CardColor.BLACK && !(isLocked)) ? "white" : "black"
 
+  const flipAnimation = useRef( new Animated.Value( 0 ) ).current;
+  
+
+  const animation = useRef(
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing( flipAnimation, {toValue: 360, duration: 1000, easing: Easing.inOut(Easing.quad),  useNativeDriver: false}),
+        Animated.delay(1000)
+      ])
+    )
+  ).current
+
+  useEffect(() => {      
+      if (loading) {        
+        animation.start()        
+     } else {
+       animation.stop()
+       flipAnimation.setValue(0)
+     }
+
+  }, [loading])
+
+  const flipStyle = {
+    transform: [     
+      {rotateY: flipAnimation.interpolate({inputRange: [0, 360],outputRange: ["0deg", "360deg"]})}
+    ]
+  }
+
+
+
+
   return (
     <View style={{alignItems: 'center'}}>
-      <View style={style.cardView} {...props}>
-        <Image style={style.cardImage} source={GetCardImageSource(card, isLocked)} />
-            {loading && (
-              <View style={{position: "absolute", left: 130, top: 100}}>
-                <KLoadingIndicator  />
-              </View>
-            )}      
+      <Animated.View style={[flipStyle, style.cardView]} {...props}>
+        <Image style={style.cardImage} source={GetCardImageSource(card, isLocked)} />     
             {(showSensitiveData  && cardNumber && cvv) ?
                 <View style={[style.sensitiveData, { height: 210, justifyContent: "space-between" }]}>
                   <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -68,7 +93,10 @@ export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveDa
             }
         <Logo style={style.logo} color={wordColor} />
         <KText style={[style.cardName, {color: wordColor}]}>{card?.name}</KText>
-      </View>
+      </Animated.View>
+      <Animated.View style={[flipStyle, style.backCardView]}>
+          
+      </Animated.View>
     </View>
   )
 }
@@ -90,6 +118,7 @@ export const GetCardImageSource = (card: Card, isLocked: boolean) => {
     case "#BA93EC": return require(`../assets/card/BA93EC.png`)
     case "#03C09A": return require(`../assets/card/03C09A.png`)
     case "#FBEAC6": return require(`../assets/card/FBEAC6.png`)
+    case "#2B2B2B": return require(`../assets/card/2B2B2B.png`)
     default: {
       if (card.media === CardMedia.VIRTUAL) {
         return require(`../assets/card/44FF4E.png`)
@@ -99,10 +128,20 @@ export const GetCardImageSource = (card: Card, isLocked: boolean) => {
   }
 }
 
+
 export default CardImage
 
 const style = StyleSheet.create({
-  cardView: {
+  cardView: {    
+    zIndex: 1,
+    backfaceVisibility: "hidden",     
+  },
+  backCardView: {        
+    position: "absolute",
+    backgroundColor: "black",
+    borderRadius: 20,
+    width: 333,
+    height: 210  
   },
   cardImage: {
   },
@@ -120,8 +159,8 @@ const style = StyleSheet.create({
   },
   cardName: {
     position: "absolute",
-    bottom: 60,
-    right: 20,
+    bottom: 65,
+    right: 15,
     textTransform: "uppercase",
     fontSize: KlutchTheme.font.size,
     fontFamily: KlutchTheme.font.semiBoldFontFamily,
