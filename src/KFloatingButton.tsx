@@ -40,10 +40,16 @@ const style = StyleSheet.create({
         borderRadius: 50,
         elevation: 10,
         position: "absolute",
-        bottom: 20,        
+        bottom: 30,        
         zIndex: 2,
         backgroundColor: "white",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        shadowOffset: {
+            width: 2,
+            height: 2
+        },
+        shadowOpacity: .1,        
+
     }
 })
