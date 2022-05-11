@@ -12,7 +12,7 @@ export interface KFloatingButtonProps extends ViewProps {
 
 export const KFloatingButton: React.FC<KFloatingButtonProps> = ({onPress, vibrationFeedback = false, size = "small", ...props} : KFloatingButtonProps) => {
     const dimensions = useWindowDimensions()
-    const width = size == "small" ? 50 : 65
+    const width = size == "small" ? 50 : 60
     const height = width
     const left = (dimensions.width / 2) - width/2
 
