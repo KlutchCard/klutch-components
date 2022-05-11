@@ -26,11 +26,17 @@ export default KMiniAppPanel
 
 const style = StyleSheet.create({
     kTransactionPanel: {
-        marginTop: 10,
-        height: 100,
-        width: "100%",
+        marginTop: 10,        
+        height: 100,        
+        width: "99.9%",
         backgroundColor: "white",
-        paddingHorizontal: 16       
+        paddingHorizontal: 16,
+        elevation: 1,
+        shadowOffset: {
+            width: 2,
+            height: 2,            
+        },
+        shadowOpacity: .1,
     },
     homePanel: {
         paddingVertical: 20,
