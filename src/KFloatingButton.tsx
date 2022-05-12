@@ -37,9 +37,6 @@ export default KFloatingButton
 
 const style = StyleSheet.create({
     kfloatingButton:{
-        // height: 50,
-        // width: 50,
-        // borderRadius: 50,
         elevation: 10,
         position: "absolute",
         bottom: 30,        
