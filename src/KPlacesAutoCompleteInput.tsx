@@ -1,6 +1,5 @@
 import { Address } from "@klutch-card/klutch-js"
 import axios from "axios"
-import Constants from 'expo-constants'
 import React, { useState } from "react"
 import { View, StyleSheet, Pressable, NativeSyntheticEvent, TextInputSubmitEditingEventData } from "react-native"
 import KlutchTheme from "./KlutchTheme"
@@ -10,17 +9,18 @@ import KTextInput, { KTextInputProps } from "./KTextInput"
 
 export interface KPlacesAutoCompleteInputProps extends KTextInputProps {
     onAddressCompleted?: (address: Address) => void
+    googleKey: string
 }
 
 type AutoComplete = Array<{name: string, placeId: string}>
 
 export const KPlacesAutoCompleteInput: React.FC<KPlacesAutoCompleteInputProps> = 
-    React.forwardRef(({onAddressCompleted, onChangeText, onSubmitEditing, ...props}: KPlacesAutoCompleteInputProps, ref) => {
+    React.forwardRef(({onAddressCompleted, onChangeText, onSubmitEditing, googleKey, ...props}: KPlacesAutoCompleteInputProps, ref) => {
 
     const [predictions, setPredictions] = useState<AutoComplete>([])
 
     const autoCompleteChangeText = (text: string) => {
-        getAutoComplete(text).then(pr => setPredictions(pr))
+        getAutoComplete(text, googleKey).then(pr => setPredictions(pr))
         
         if (onChangeText) {
             onChangeText(text)
@@ -46,7 +46,7 @@ export const KPlacesAutoCompleteInput: React.FC<KPlacesAutoCompleteInputProps> =
 
     const predictionClicked = (placeId: string) => {
         setPredictions([])
-        getDetails(placeId).then(a  => {
+        getDetails(placeId, googleKey).then(a  => {
             if (onAddressCompleted && a) {
                 onAddressCompleted(a) 
             }
@@ -105,11 +105,11 @@ const style = StyleSheet.create({
     }
 })
 
-const googleKey = Constants?.manifest?.extra?.googleApiKey
 
 
 
-async function getAutoComplete(text: string): Promise<AutoComplete> {    
+
+async function getAutoComplete(text: string, googleKey: string): Promise<AutoComplete> {    
     const resp = await axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${text}&types=address&components=country:us&key=${googleKey}`)    
     if (resp.data && resp.data.status === "OK") {
         const predictions = resp.data.predictions
@@ -118,7 +118,7 @@ async function getAutoComplete(text: string): Promise<AutoComplete> {
     return []
 }
 
-async function getDetails(placeId: string): Promise<Address | null> {
+async function getDetails(placeId: string, googleKey: string): Promise<Address | null> {
     const resp = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${googleKey}`)
     if (resp.data && resp.data.status === "OK") {
         const addr =resp.data.result.address_components

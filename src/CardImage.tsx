@@ -94,9 +94,10 @@ export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveDa
         <Logo style={style.logo} color={wordColor} />
         <KText style={[style.cardName, {color: wordColor}]}>{card?.name}</KText>
       </Animated.View>
+      {loading && (
       <Animated.View style={[flipStyle, style.backCardView]}>
           
-      </Animated.View>
+      </Animated.View>)}
     </View>
   )
 }
