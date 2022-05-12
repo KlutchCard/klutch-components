@@ -33,10 +33,11 @@ const style = StyleSheet.create({
         paddingHorizontal: 16,
         elevation: 1,
         shadowOffset: {
-            width: 2,
-            height: 2,            
+            width: 7,
+            height: 5
         },
-        shadowOpacity: .1,
+        shadowOpacity: 0.04,        
+        marginRight: 1
     },
     homePanel: {
         paddingVertical: 20,
