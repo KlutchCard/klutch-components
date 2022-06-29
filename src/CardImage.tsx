@@ -29,7 +29,7 @@ export const CardImage: React.FC<CardImageProps> = ({card, isLocked, sensitiveDa
     Animated.loop(
       Animated.sequence([
         Animated.timing( flipAnimation, {toValue: 360, duration: 1000, easing: Easing.inOut(Easing.quad),  useNativeDriver: false}),
-        Animated.delay(1000)
+        Animated.delay(3000)
       ])
     )
   ).current
