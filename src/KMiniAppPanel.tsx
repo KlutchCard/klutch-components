@@ -59,5 +59,6 @@ const style = StyleSheet.create({
     templateContainer: {
         flex: 1,
         marginTop: 18,
+        overflow: "hidden"
     },
 })
