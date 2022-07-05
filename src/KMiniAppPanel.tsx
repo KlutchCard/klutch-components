@@ -2,18 +2,25 @@ import { KText } from "./KText"
 import { KlutchTheme } from "./KlutchTheme"
 import React, { PropsWithChildren } from "react"
 import { View, StyleSheet } from "react-native"
+import { RecipePanelSize } from "@klutch-card/klutch-js"
 
 
 export interface KTransactionPanelProps {
     recipeName: string,
-    panelStyle: "transaction" | "home"
+    panelStyle?: "transaction" | "home"
+    panelSize?: RecipePanelSize
 }
 
-export const KMiniAppPanel: React.FC<KTransactionPanelProps> = ({recipeName, children, panelStyle, ...props} : PropsWithChildren<KTransactionPanelProps>) => {
+export const KMiniAppPanel: React.FC<KTransactionPanelProps> = ({recipeName, children, panelStyle, panelSize} : PropsWithChildren<KTransactionPanelProps>) => {
     
+    if (panelStyle === "home") {
+        panelSize = RecipePanelSize.LARGE
+    } else if (panelStyle === "transaction"){
+        panelSize = RecipePanelSize.SMALL
+    }
 
     return (
-        <View style={[style.kTransactionPanel, (panelStyle == "home" && style.homePanel)]}>
+        <View style={[style.kTransactionPanel, panelSize && panelStyles[panelSize]]}>
             <KText style={style.recipeName} fontWeight="semibold">{recipeName}</KText>
             <View style={style.templateContainer}>
                 {children}
@@ -24,10 +31,16 @@ export const KMiniAppPanel: React.FC<KTransactionPanelProps> = ({recipeName, chi
 
 export default KMiniAppPanel
 
+const panelStyles = {
+    SMALL: { height: 105, },
+    MEDIUM: { height: 130, },
+    LARGE: { height: 220, }
+}
+
 const style = StyleSheet.create({
     kTransactionPanel: {
         marginTop: 10,        
-        height: 100,        
+        height: panelStyles.SMALL.height,        
         width: "99.9%",
         backgroundColor: "white",
         paddingHorizontal: 16,
@@ -37,11 +50,8 @@ const style = StyleSheet.create({
             height: 5
         },
         shadowOpacity: 0.04,        
-        marginRight: 1
-    },
-    homePanel: {
+        marginRight: 1,
         paddingVertical: 20,
-        height: 225
     },
     recipeName: {
         textTransform: "uppercase",
@@ -50,5 +60,6 @@ const style = StyleSheet.create({
     templateContainer: {
         flex: 1,
         marginTop: 18,
+        overflow: "hidden"
     },
 })
