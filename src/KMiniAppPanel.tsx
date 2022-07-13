@@ -32,7 +32,7 @@ export const KMiniAppPanel: React.FC<KTransactionPanelProps> = ({recipeName, chi
 export default KMiniAppPanel
 
 const panelStyles = {
-    SMALL: { height: 105, },
+    SMALL: { height: 110, },
     MEDIUM: { height: 130, },
     LARGE: { height: 220, }
 }
