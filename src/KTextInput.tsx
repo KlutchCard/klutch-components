@@ -158,10 +158,10 @@ export class KTextInput extends React.Component<KTextInputProps, KTextInputState
     }
 }
 
-export const CheckMark = ({color, ...props}: any) => (
+export const CheckMark = ({ color, size = 10, ...props }: any) => (
   <Svg
-    width={12}
-    height={10}
+    width={size * 1.2}
+    height={size}
     viewBox="0 0 12 10"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
